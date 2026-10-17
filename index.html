@@ -72,10 +72,6 @@
     <div class="list card" id="notice-list"></div>
     <div class="sec-h"><h2>Next up</h2><a class="small" data-go="events">All events</a></div>
     <div id="next-event"></div>
-    <div class="admin">
-      <div class="sec-h"><h2>Treasurer</h2></div>
-      <div class="list card" id="admin-list"></div>
-    </div>
   </section>
 
   <!-- PAY -->
@@ -83,7 +79,7 @@
     <h1>Pay dues</h1>
     <p class="muted" id="pay-sub"></p>
     <div class="card">
-      <div class="field admin"><label>Paying for</label><select id="pay-member"></select></div>
+      <div class="field"><label>Paying for <span class="muted">(tick more than one to pay for others too)</span></label><div class="checks" id="pay-for"></div></div>
       <div class="field"><label>Months</label><div class="checks" id="pay-months"></div></div>
       <div class="amount"><span class="muted">Total</span><span class="num" id="pay-total">₹0</span></div>
       <div class="paybtns">
@@ -105,6 +101,45 @@
     </div>
     <div class="sec-h"><h2>Your payments</h2></div>
     <div class="list card" id="my-payments"></div>
+  </section>
+
+  <!-- FOOD & DRINK -->
+  <section class="page" id="p-prefs">
+    <h1>Food &amp; drink</h1>
+    <p class="muted">So the host orders right. Only members and hosts see this.</p>
+    <div class="card">
+      <div class="field"><label>Diet</label><div class="chips" id="pf-diet"></div></div>
+      <div class="field"><label>Allergies / strictly avoid</label><input id="pf-allergy" placeholder="e.g. peanuts, shellfish"></div>
+      <div class="field"><label>Drinks</label><div class="chips" id="pf-drinks"></div></div>
+      <div class="field"><label>Usual order / anything else</label><input id="pf-notes" placeholder="Old Monk and Thums Up, no ice"></div>
+      <div class="sheet-f"><button class="btn" id="pf-prefs-save">Save</button></div>
+    </div>
+  </section>
+
+  <!-- ADMIN -->
+  <section class="page" id="p-admin">
+    <h1>Treasurer</h1>
+    <p class="muted" id="ad-sub"></p>
+    <div class="tiles2">
+      <div class="tile"><div class="lbl">Balance</div><div class="val num" id="ad-bal">—</div></div>
+      <div class="tile"><div class="lbl">Outstanding</div><div class="val num" id="ad-out" style="color:var(--warn-fg)">—</div><div class="sub" id="ad-out-sub"></div></div>
+      <div class="tile"><div class="lbl" id="ad-m-lbl">This month</div><div class="val num" id="ad-m">—</div><div class="sub" id="ad-m-sub"></div></div>
+      <div class="tile"><div class="lbl">To verify</div><div class="val num" id="ad-ver">—</div><div class="sub">app payments</div></div>
+    </div>
+    <div class="sec-h"><h2>Actions</h2></div>
+    <div class="list card" id="admin-list"></div>
+    <div class="sec-h"><h2>Downloads</h2><span class="small muted">CSV · opens in Excel / Sheets</span></div>
+    <div class="list card">
+      <button class="row" data-dl="status"><div class="body"><div class="t">Payment status by member</div><div class="d">Months paid, outstanding, last payment, UTR</div></div><span class="d">⬇</span></button>
+      <button class="row" data-dl="matrix"><div class="body"><div class="t">Payment summary matrix</div><div class="d">Member × month, like the Excel register</div></div><span class="d">⬇</span></button>
+      <button class="row" data-dl="ledger"><div class="body"><div class="t">Ledger</div><div class="d">All entries with running balance</div></div><span class="d">⬇</span></button>
+      <button class="row" data-dl="month"><div class="body"><div class="t">This month's collections</div><div class="d" id="dl-month-sub"></div></div><span class="d">⬇</span></button>
+      <button class="row" data-dl="pending"><div class="body"><div class="t">Pending verifications</div><div class="d">App payments awaiting your check</div></div><span class="d">⬇</span></button>
+      <button class="row" data-dl="contrib"><div class="body"><div class="t">Society contributions</div><div class="d">By cause</div></div><span class="d">⬇</span></button>
+      <button class="row" data-dl="members"><div class="body"><div class="t">Member directory</div><div class="d">Contacts, studio, position, food &amp; drink</div></div><span class="d">⬇</span></button>
+    </div>
+    <div class="sec-h"><h2>Defaulters</h2><button class="chip" id="ad-nudge">Copy reminder list</button></div>
+    <div class="list card" id="ad-defaulters"></div>
   </section>
 
   <!-- EVENTS -->
@@ -142,6 +177,7 @@
   <button data-p="events"><svg viewBox="0 0 24 24"><path d="M4 5h16v15H4zM4 10h16M8 3v4M16 3v4"/></svg>Events</button>
   <button data-p="members"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>Members</button>
   <button data-p="ledger"><svg viewBox="0 0 24 24"><path d="M5 3h14v18H5zM9 8h6M9 12h6M9 16h4"/></svg>Ledger</button>
+  <button data-p="admin" class="admin"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/></svg>Admin</button>
 </nav>
 
 <div class="scrim" id="scrim"><div class="sheet" id="sheet" role="dialog" aria-modal="true"></div></div>

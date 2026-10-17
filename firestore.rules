@@ -31,8 +31,9 @@ service cloud.firestore {
     match /members/{id} {
       allow read: if signedIn();
       allow create, delete: if isAdmin();
-      // Admin edits anything. A member may only touch their own `dues` map (self-recorded payment), nothing else.
-      allow update: if isAdmin() || (ownsMember(id) && onlyKeys(['dues','profile']));
+      // Own record: dues (self-recorded payment) and profile. Any member may also update another member's `dues`
+      // (paying on someone's behalf); the app flags those unverified and only admins can verify or edit anything else.
+      allow update: if isAdmin() || (ownsMember(id) && onlyKeys(['dues','profile'])) || (signedIn() && onlyKeys(['dues']));
     }
 
     match /ledger/{id} {
@@ -41,8 +42,7 @@ service cloud.firestore {
       allow create: if isAdmin() || (
         signedIn() && request.resource.data.uid == request.auth.uid &&
         request.resource.data.verified == false &&
-        request.resource.data.debit == 0 && request.resource.data.credit > 0 && request.resource.data.credit <= 50000 &&
-        ownsMember(request.resource.data.member)
+        request.resource.data.debit == 0 && request.resource.data.credit > 0 && request.resource.data.credit <= 50000
       );
       allow update, delete: if isAdmin();
     }

@@ -112,7 +112,7 @@ async function enablePush(){
 }
 
 // ---------- render: home ----------
-function renderAll(){ renderHome(); renderPay(); renderMembers(); renderLedger(); renderMatrix(); renderContrib(); renderEvents(); renderNotices(); }
+function renderAll(){ renderHome(); renderPay(); renderMembers(); renderLedger(); renderMatrix(); renderContrib(); renderEvents(); renderNotices(); renderAdmin(); renderPrefs(); }
 function renderHome(){
   if(!S.user) return;
   const first=(S.member?.name||S.user.displayName||'there').split(' ')[0]; $('#home-greet').textContent=`Hello, ${first}`;
@@ -124,17 +124,10 @@ function renderHome(){
     if(!pm.length){ $('#my-dues-val').textContent='All paid'; $('#my-dues-sub').textContent=`Up to date through ${mLong(curMonth)}`; $('#my-pay-btn').hidden=true; }
     else { $('#my-dues-val').textContent=INR(pm.length*fee()); $('#my-dues-sub').textContent=`${pm.map(mLabel).join(', ')}${myPend.length?` · ${myPend.length} payment awaiting verification`:''}`; $('#my-pay-btn').hidden=false; } }
   else { $('#my-dues-val').textContent='Not linked'; $('#my-dues-sub').textContent='Tap your initials to link your member record'; $('#my-pay-btn').hidden=true; }
+  const nb=$('#home-nudge'); if(S.member && !S.member.profile?.prefs?.diet){ if(!nb){ const d=document.createElement('button'); d.id='home-nudge'; d.className='banner'; d.style.cssText='border:0;text-align:left;cursor:pointer;width:100%'; d.innerHTML='<b>Food &amp; drink preferences</b> · tell the host what you eat and drink →'; d.onclick=()=>{ renderPrefs(); go('prefs'); }; $('#home-greet').after(d); } } else nb?.remove();
   // next event
   const up=Object.entries(S.events).filter(([,e])=>e.date>=isoToday).sort((a,b)=>a[1].date.localeCompare(b[1].date));
   $('#next-event').innerHTML = up.length ? eventCard(up[0][0],up[0][1]) : '<div class="card empty">No upcoming events</div>';
-  // admin list
-  if(S.isAdmin){ const pend=Object.entries(S.payments).filter(([,p])=>p.status==='pending'); const unlinked=Object.values(S.members).filter(m=>m.status!=='left'&&!m.email).length;
-    $('#admin-list').innerHTML = `<button class="row" id="a-pay"><span class="t">Payments to verify</span><span class="pill ${pend.length?'pending':'paid'}">${pend.length}</span></button>
-    <button class="row" id="a-record"><span class="t">Record a cash / bank payment</span><span class="d">›</span></button>
-    <button class="row" id="a-links"><span class="t">Member sign-in links</span><span class="d">${unlinked} without email</span></button>
-    <button class="row" id="a-settings"><span class="t">Fee, UPI ID and admins</span><span class="d">›</span></button>
-    ${Object.keys(S.members).length?'':'<button class="row" id="a-import"><span class="t">Import the Excel register (first-time setup)</span><span class="d">›</span></button>'}`;
-    $('#a-pay').onclick=verifySheet; $('#a-record').onclick=()=>recordSheet(); $('#a-links').onclick=linksSheet; $('#a-settings').onclick=settingsSheet; $('#a-import')&&($('#a-import').onclick=importSeed); }
 }
 $('#my-pay-btn').addEventListener('click', ()=>go('pay'));
 
@@ -156,22 +149,23 @@ $('#notice-add').addEventListener('click', ()=>{
 function renderPay(){
   if(!S.user) return;
   const upi=S.settings.upiId||C.UPI_ID||''; $('#pay-upi-id').innerHTML = upi&&!upi.startsWith('PASTE') ? `Paying to <b>${esc(upi)}</b> (${esc(S.settings.upiName||C.UPI_NAME||'THC')}) <button class="chip" data-copy-upi>Copy UPI ID</button>` : '<span class="banner">UPI ID not set yet. Admin: Treasurer → Fee, UPI ID and admins.</span>';
-  const sel=$('#pay-member'); if(S.isAdmin){ sel.innerHTML=activeMembers().map(([id,m])=>`<option value="${id}" ${id===(sel.value||S.memberId)?'selected':''}>${esc(m.name)}</option>`).join(''); }
-  const id = S.isAdmin ? (sel.value||S.memberId) : S.memberId; const m=S.members[id];
-  if(!m){ $('#pay-sub').textContent='Link your member record first (tap your initials, top right).'; $('#pay-months').innerHTML=''; $('#pay-total').textContent='₹0'; return; }
-  $('#pay-sub').textContent=`${INR(fee())} per month · ${esc(m.name)}`;
+  const pf=$('#pay-for'); const chosen=new Set($$('#pay-for input:checked').map(i=>i.value)); if(!pf.dataset.init){ if(S.memberId) chosen.add(S.memberId); pf.dataset.init=S.memberId?'1':''; }
+  pf.innerHTML=activeMembers().map(([mid,mm])=>`<label class="${pendingMonths(mm).length?'':'has'}"><input type="checkbox" value="${mid}" ${chosen.has(mid)?'checked':''}>${esc(mm.name.split(' ')[0])}${mid===S.memberId?' (you)':''}</label>`).join('');
+  const ids=$$('#pay-for input:checked').map(i=>i.value); const id=ids[0]; const m=S.members[id];
+  if(!m){ $('#pay-sub').textContent=S.memberId?'Tick who you are paying for.':'Link your member record first (tap your initials, top right).'; $('#pay-months').innerHTML=''; $('#pay-total').textContent='₹0'; return; }
+  $('#pay-sub').textContent=`${INR(fee())} per member per month · ${ids.map(x=>S.members[x].name.split(' ')[0]).join(', ')}`;
   const list=monthRange(months()[0], addMonths(curMonth,2)); const pend=pendingMonths(m);
   const paidUpto=[...list].reverse().find(mo=>dueState(m,mo)==='paid');
   const show=list.filter(mo=>dueState(m,mo)!=='na' && (dueState(m,mo)!=='paid' || mo>curMonth));
   $('#pay-months').innerHTML=(paidUpto?`<div class="small muted" style="grid-column:1/-1">Paid through ${mLabel(paidUpto)}</div>`:'')+show.map(mo=>{ const st=dueState(m,mo); const has=st==='paid'; return `<label class="${has?'has':''}"><input type="checkbox" value="${mo}" ${has?'disabled':''} ${pend.includes(mo)&&mo<=curMonth?'checked':''}>${mLabel(mo)}${has?' ✓':''}${mo>curMonth?' ·adv':''}</label>`; }).join('')||'<div class="small muted">Nothing due.</div>';
   payTotal();
 }
-const payTotal = () => { const n=$$('#pay-months input:checked').length; $('#pay-total').textContent=INR(n*fee()); };
-$('#pay-months').addEventListener('change', payTotal); $('#pay-member').addEventListener('change', renderPay);
+const payTotal = () => { const n=$$('#pay-months input:checked').length*Math.max(1,$$('#pay-for input:checked').length); $('#pay-total').textContent=INR(n*fee()); };
+$('#pay-months').addEventListener('change', payTotal); $('#pay-for').addEventListener('change', renderPay);
 $('#p-pay').addEventListener('click', async e=>{ if(e.target.closest('[data-copy-upi]')){ try{ await navigator.clipboard.writeText(S.settings.upiId||C.UPI_ID); toast('UPI ID copied'); }catch{ toast('Could not copy'); } } });
-function upiParams(){ const id=S.isAdmin?$('#pay-member').value:S.memberId; const m=S.members[id]; const sel=$$('#pay-months input:checked').map(i=>i.value); const amt=sel.length*fee();
-  const tn=`THC ${sel.map(mLabel).join(' ').replace(/'/g,'')} ${(m?.name||'').split(' ')[0]}`.slice(0,50);
-  return {id,m,sel,amt,q:`pa=${encodeURIComponent(S.settings.upiId||C.UPI_ID)}&pn=${encodeURIComponent(S.settings.upiName||C.UPI_NAME||'THC')}&am=${amt}&cu=INR&tn=${encodeURIComponent(tn)}`}; }
+function upiParams(){ const ids=$$('#pay-for input:checked').map(i=>i.value); const id=ids[0]; const m=S.members[id]; const sel=$$('#pay-months input:checked').map(i=>i.value); const amt=sel.length*fee()*Math.max(1,ids.length);
+  const tn=`THC ${sel.map(mLabel).join(' ').replace(/'/g,'')} ${ids.map(x=>(S.members[x]?.name||'').split(' ')[0]).join(' ')}`.slice(0,50);
+  return {id,ids,m,sel,amt,q:`pa=${encodeURIComponent(S.settings.upiId||C.UPI_ID)}&pn=${encodeURIComponent(S.settings.upiName||C.UPI_NAME||'THC')}&am=${amt}&cu=INR&tn=${encodeURIComponent(tn)}`}; }
 function launchPay(app){
   const p=upiParams(); if(!p.sel.length) return toast('Select at least one month'); const upi=S.settings.upiId||C.UPI_ID; if(!upi||upi.startsWith('PASTE')) return toast('UPI ID is not set up yet');
   const url = app==='gpay' ? (isIOS?'gpay://upi/pay?':'tez://upi/pay?')+p.q : app==='phonepe' ? 'phonepe://pay?'+p.q : 'upi://pay?'+p.q;
@@ -183,24 +177,25 @@ function launchPay(app){
 document.addEventListener('visibilitychange',()=>{ if(document.visibilityState!=='visible') return; let p=null; try{ p=JSON.parse(sessionStorage.getItem('thc-pay')||'null'); }catch{} if(!p) return; go('pay'); $('#pay-confirm').hidden=false; $$('#pay-months input').forEach(i=>{ if(!i.disabled) i.checked=p.sel.includes(i.value); }); payTotal(); setTimeout(()=>{ $('#pay-utr').focus(); toast('Paid? Enter the UTR from your receipt'); },300); });
 $('#pay-gpay').onclick=()=>launchPay('gpay'); $('#pay-phonepe').onclick=()=>launchPay('phonepe'); $('#pay-upi').onclick=()=>launchPay('upi');
 $('#pay-submit').addEventListener('click', async ()=>{
-  const p=upiParams(); if(!p.sel.length) return toast('Select the months you paid for'); const utr=$('#pay-utr').value.trim(); const app=$('#pay-app').value;
+  const p=upiParams(); if(!p.ids.length) return toast('Tick who you paid for'); if(!p.sel.length) return toast('Select the months you paid for'); const utr=$('#pay-utr').value.trim(); const app=$('#pay-app').value;
   if(!/^\d{10,16}$/.test(utr) && !['Cash','Bank transfer'].includes(app)) return toast('Enter the 12-digit UTR from your UPI receipt');
-  if(Object.values(S.payments).some(x=>x.utr===utr&&utr)) return toast('That UTR was already submitted');
-  try{ const pref=db.collection('payments').doc(); const lref=db.collection('ledger').doc(); const b=db.batch();
-    const dues={...(p.m.dues||{})}; p.sel.forEach(mo=>dues[mo]={s:'paid',amt:fee(),unverified:true,paymentId:pref.id});
-    b.set(pref,{uid:S.user.uid, memberId:p.id, memberName:p.m.name, months:p.sel, amount:p.amt, utr, app, note:$('#pay-note').value.trim(), status:'pending', createdAt:FV.serverTimestamp(), date:isoToday, ledgerId:lref.id});
-    b.set(lref,{date:isoToday, particulars:`${p.sel.length===1?mLong(p.sel[0]):p.sel.map(mLabel).join(', ')} payment from ${p.m.name}${utr?' · UTR '+utr:''}`, credit:p.amt, debit:0, type:'dues', member:p.id, months:p.sel, seq:Date.now(), uid:S.user.uid, verified:false, paymentId:pref.id});
-    b.update(db.doc('members/'+p.id),{dues});
+  if(utr && Object.values(S.payments).some(x=>x.utr===utr)) return toast('That UTR was already submitted');
+  try{ const b=db.batch(); const per=fee(); const label=p.sel.length===1?mLong(p.sel[0]):p.sel.map(mLabel).join(', '); const payer=S.member?.name||S.user.displayName||'';
+    for(const mid of p.ids){ const mm=S.members[mid]; const pref=db.collection('payments').doc(); const lref=db.collection('ledger').doc(); const dues={...(mm.dues||{})}; p.sel.forEach(mo=>dues[mo]={s:'paid',amt:per,unverified:true,paymentId:pref.id});
+      const onBehalf = mid!==S.memberId ? ` (paid by ${payer})` : '';
+      b.set(pref,{uid:S.user.uid, payerMemberId:S.memberId||null, payerName:payer, memberId:mid, memberName:mm.name, months:p.sel, amount:per*p.sel.length, utr, app, note:$('#pay-note').value.trim(), status:'pending', createdAt:FV.serverTimestamp(), date:isoToday, ledgerId:lref.id, groupTotal:p.amt});
+      b.set(lref,{date:isoToday, particulars:`${label} payment from ${mm.name}${onBehalf}${utr?' · UTR '+utr:''}`, credit:per*p.sel.length, debit:0, type:'dues', member:mid, months:p.sel, seq:Date.now(), uid:S.user.uid, verified:false, paymentId:pref.id});
+      b.update(db.doc('members/'+mid),{dues}); }
     await b.commit(); sessionStorage.removeItem('thc-pay');
-    $('#pay-utr').value=''; $('#pay-note').value=''; $('#pay-confirm').hidden=true; toast('Recorded. Months marked paid; treasurer will verify.'); }catch(e){ fail(e); }
+    $('#pay-utr').value=''; $('#pay-note').value=''; $('#pay-confirm').hidden=true; toast(`Recorded for ${p.ids.length} member${p.ids.length>1?'s':''}; treasurer will verify.`); }catch(e){ fail(e); }
 });
 function renderPayments(){
   const mine=Object.entries(S.payments).filter(([,p])=>S.isAdmin?true:p.uid===S.user?.uid).sort((a,b)=>(b[1].createdAt?.seconds||0)-(a[1].createdAt?.seconds||0)).slice(0,20);
-  $('#my-payments').innerHTML = mine.length ? mine.map(([id,p])=>`<div class="row" style="cursor:default"><div class="body"><div class="t">${INR(p.amount)} · ${esc(p.months.map(mLabel).join(', '))}</div><div class="d">${S.isAdmin?esc(p.memberName)+' · ':''}${esc(p.app)} ${p.utr?'· '+esc(p.utr):''} · ${fmtDate(p.date)}</div></div><span class="pill ${p.status}">${p.status}</span></div>`).join('') : '<div class="empty">No payments submitted from the app yet</div>';
+  $('#my-payments').innerHTML = mine.length ? mine.map(([id,p])=>`<div class="row" style="cursor:default"><div class="body"><div class="t">${INR(p.amount)} · ${esc(p.months.map(mLabel).join(', '))}</div><div class="d">${S.isAdmin?esc(p.memberName)+' · ':''}${p.payerMemberId&&p.payerMemberId!==p.memberId?'paid by '+esc(p.payerName)+' · ':''}${esc(p.app)} ${p.utr?'· '+esc(p.utr):''} · ${fmtDate(p.date)}</div></div><span class="pill ${p.status}">${p.status}</span></div>`).join('') : '<div class="empty">No payments submitted from the app yet</div>';
 }
 function verifySheet(){
   const pend=Object.entries(S.payments).filter(([,p])=>p.status==='pending').sort((a,b)=>(a[1].createdAt?.seconds||0)-(b[1].createdAt?.seconds||0));
-  openSheet(`<div class="sheet-h"><h2>Verify payments</h2><button class="icon-btn" data-x>✕</button></div><p class="small muted">Match the UTR against the THC bank/UPI statement. Verifying posts a ledger credit and marks the months paid.</p><div class="list">${pend.length?pend.map(([id,p])=>`<div class="row" style="cursor:default;flex-wrap:wrap"><div class="body"><div class="t">${esc(p.memberName)} · ${INR(p.amount)}</div><div class="d">${esc(p.months.map(mLabel).join(', '))} · ${esc(p.app)} · UTR <b>${esc(p.utr||'—')}</b> · ${fmtDate(p.date)}${p.note?' · '+esc(p.note):''}</div></div><div class="row-btns"><button class="btn sm danger" data-rej="${id}">Reject</button><button class="btn sm" data-ver="${id}">Verify</button></div></div>`).join(''):'<div class="empty">Nothing pending</div>'}</div>`);
+  openSheet(`<div class="sheet-h"><h2>Verify payments</h2><button class="icon-btn" data-x>✕</button></div><p class="small muted">Match the UTR against the THC bank/UPI statement. Verifying posts a ledger credit and marks the months paid.</p><div class="list">${pend.length?pend.map(([id,p])=>`<div class="row" style="cursor:default;flex-wrap:wrap"><div class="body"><div class="t">${esc(p.memberName)} · ${INR(p.amount)}</div><div class="d">${p.payerMemberId&&p.payerMemberId!==p.memberId?'paid by '+esc(p.payerName)+' · ':''}${esc(p.months.map(mLabel).join(', '))} · ${esc(p.app)} · UTR <b>${esc(p.utr||'—')}</b> · ${fmtDate(p.date)}${p.note?' · '+esc(p.note):''}</div></div><div class="row-btns"><button class="btn sm danger" data-rej="${id}">Reject</button><button class="btn sm" data-ver="${id}">Verify</button></div></div>`).join(''):'<div class="empty">Nothing pending</div>'}</div>`);
   $('#sheet').onclick = async e => { const v=e.target.closest('[data-ver]'), r=e.target.closest('[data-rej]'); if(!v&&!r) return; const id=(v||r).dataset.ver||(v||r).dataset.rej; const p=S.payments[id]; (v||r).disabled=true;
     try{ const m=S.members[p.memberId]; const dues={...(m?.dues||{})}; const b=db.batch();
       if(v){ p.months.forEach(mo=>{ if(dues[mo]) dues[mo]={s:'paid',amt:dues[mo].amt||fee()}; }); if(p.ledgerId) b.update(db.doc('ledger/'+p.ledgerId),{verified:true, verifiedBy:S.user.uid}); b.update(db.doc('payments/'+id),{status:'verified', verifiedBy:S.user.uid, verifiedAt:FV.serverTimestamp()}); }
@@ -232,6 +227,30 @@ function recordSheet(presetId){
     try{ await applyPayment(id, sel, total, $('#r-d').value||isoToday, `${sel.length===1?mLong(sel[0]):sel.map(mLabel).join(', ')} payment from ${m.name}${ref?' · '+ref:''}`); closeSheet(); toast(`Recorded ${INR(total)} from ${m.name}`); }catch(e){ fail(e); } };
 }
 
+// ---------- food & drink ----------
+const DIETS=['Vegetarian','Non-vegetarian','Eggetarian','Vegan','Jain','Pescatarian']; const DRINKS=["Doesn't drink",'Beer','Wine','Whisky','Rum','Gin','Vodka','Cocktails','Tequila','Mocktails only'];
+function renderPrefs(){ const p=S.member?.profile?.prefs||{};
+  $('#pf-diet').innerHTML=DIETS.map(d=>`<button class="chip ${p.diet===d?'on':''}" data-diet="${d}">${d}</button>`).join('');
+  $('#pf-drinks').innerHTML=DRINKS.map(d=>`<button class="chip ${(p.drinks||[]).includes(d)?'on':''}" data-drink="${d}">${d}</button>`).join('');
+  if(document.activeElement!==$('#pf-allergy')) $('#pf-allergy').value=p.allergies||''; if(document.activeElement!==$('#pf-notes')) $('#pf-notes').value=p.notes||'';
+}
+$('#pf-diet').addEventListener('click', e=>{ const b=e.target.closest('[data-diet]'); if(!b) return; $$('#pf-diet .chip').forEach(c=>c.classList.toggle('on', c===b && !b.classList.contains('on'))); });
+$('#pf-drinks').addEventListener('click', e=>{ const b=e.target.closest('[data-drink]'); if(!b) return; if(b.dataset.drink==="Doesn't drink"){ $$('#pf-drinks .chip').forEach(c=>c.classList.remove('on')); b.classList.add('on'); } else { $('#pf-drinks [data-drink="Doesn\'t drink"]').classList.remove('on'); b.classList.toggle('on'); } });
+$('#pf-prefs-save').addEventListener('click', async ()=>{ if(!S.memberId) return toast('Link your member record first'); const prefs={diet:$('#pf-diet .chip.on')?.dataset.diet||'', drinks:$$('#pf-drinks .chip.on').map(c=>c.dataset.drink), allergies:$('#pf-allergy').value.trim(), notes:$('#pf-notes').value.trim()};
+  try{ await db.doc('members/'+S.memberId).update({profile:{...(S.member.profile||{}), prefs}}); toast('Saved. Hosts can see this when planning.'); go('home'); }catch(x){ fail(x); } });
+function cateringSheet(id){ const e=S.events[id]; const going=activeMembers().filter(([mid])=>e.rsvp?.[mid]?.going); const list=going.length?going:activeMembers(); const basis=going.length?`${going.length} confirmed`:`all ${list.length} members (no RSVPs yet)`;
+  const cnt={}; const drinks={}; const allergies=[]; const missing=[];
+  list.forEach(([mid,m])=>{ const p=m.profile?.prefs; if(!p||!p.diet){ missing.push(m.name); } else { cnt[p.diet]=(cnt[p.diet]||0)+1; } (p?.drinks||[]).forEach(d=>drinks[d]=(drinks[d]||0)+1); if(p?.allergies) allergies.push(`${m.name}: ${p.allergies}`); });
+  openSheet(`<div class="sheet-h"><div><h2>Catering</h2><div class="small muted">${esc(e.title)} · based on ${basis}</div></div><button class="icon-btn" data-x>✕</button></div>
+  <div><h3>Food</h3><div class="row-btns" style="margin-top:6px">${Object.entries(cnt).sort((x,y)=>y[1]-x[1]).map(([k,v])=>`<span class="pill role">${k} · ${v}</span>`).join('')||'<span class="muted small">No preferences on file</span>'}</div></div>
+  <div><h3>Drinks</h3><div class="row-btns" style="margin-top:6px">${Object.entries(drinks).sort((x,y)=>y[1]-x[1]).map(([k,v])=>`<span class="pill role">${k} · ${v}</span>`).join('')||'<span class="muted small">No preferences on file</span>'}</div></div>
+  ${allergies.length?`<div><h3>Allergies</h3><ul class="small" style="margin:6px 0 0;padding-left:18px">${allergies.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>`:''}
+  ${missing.length?`<div class="small muted">${missing.length} haven't filled in preferences: ${esc(missing.map(n=>n.split(' ')[0]).join(', '))}</div>`:''}
+  <div class="list" style="max-height:40vh;overflow:auto;border-top:1px solid var(--line)">${list.map(([mid,m])=>{ const p=m.profile?.prefs||{}; return `<div class="row" style="cursor:default;padding:10px 0"><div class="body"><div class="t">${esc(m.name)}</div><div class="d">${esc(p.diet||'—')}${p.drinks?.length?' · '+esc(p.drinks.join(', ')):''}${p.notes?' · '+esc(p.notes):''}</div></div></div>`; }).join('')}</div>
+  <div class="sheet-f"><button class="btn ghost" id="cat-copy">Copy summary</button></div>`);
+  $('#cat-copy').onclick=async()=>{ const txt=`${e.title} · ${fmtDate(e.date)} · ${basis}\nFood: ${Object.entries(cnt).map(([k,v])=>k+' '+v).join(', ')||'-'}\nDrinks: ${Object.entries(drinks).map(([k,v])=>k+' '+v).join(', ')||'-'}${allergies.length?'\nAllergies: '+allergies.join('; '):''}`; try{ await navigator.clipboard.writeText(txt); toast('Copied'); }catch{ toast('Could not copy'); } };
+}
+
 // ---------- events ----------
 let evSubs={};
 function subEventSubs(){
@@ -247,7 +266,7 @@ function eventCard(id,e){
   ${e.notes?`<div class="small" style="white-space:pre-wrap">${esc(e.notes)}</div>`:''}
   <div class="row-btns" style="justify-content:space-between"><span class="small muted">${going} going${past||att?` · ${att} attended`:''}</span>
   ${past ? (myA?'<span class="pill present">You attended</span>':'') : my ? `<div class="row-btns"><button class="chip ${myR?.going===true?'on':''}" data-rsvp="${id}" data-v="1">Going</button><button class="chip ${myR?.going===false?'on':''}" data-rsvp="${id}" data-v="0">Can't</button>${myA?'<span class="pill present">Checked in</span>':`<button class="btn sm" data-checkin="${id}">Check in</button>`}</div>` : ''}
-  ${S.isAdmin?`<button class="chip" data-att="${id}">Attendance</button>`:''}<button class="chip" data-share="${id}">Share invite</button></div></div>`;
+  ${S.isAdmin?`<button class="chip" data-att="${id}">Attendance</button><button class="chip" data-cater="${id}">Catering</button>`:''}<button class="chip" data-share="${id}">Share invite</button></div></div>`;
 }
 function renderEvents(){
   const list=Object.entries(S.events).sort((a,b)=>b[1].date.localeCompare(a[1].date)); const up=list.filter(([,e])=>e.date>=isoToday).reverse(), past=list.filter(([,e])=>e.date<isoToday);
@@ -258,6 +277,7 @@ document.addEventListener('click', async e=>{
   const c=e.target.closest('[data-checkin]'); if(c){ checkinSheet(c.dataset.checkin); return; }
   const ed=e.target.closest('[data-ev-edit]'); if(ed){ eventForm(ed.dataset.evEdit); return; }
   const at=e.target.closest('[data-att]'); if(at){ attendanceSheet(at.dataset.att); return; }
+  const ct=e.target.closest('[data-cater]'); if(ct){ cateringSheet(ct.dataset.cater); return; }
   const sh=e.target.closest('[data-share]'); if(sh){ const ev=S.events[sh.dataset.share]; const url=new URL('event.html?e='+sh.dataset.share, location.href).href; const text=`THC · ${ev.title}\n${fmtDate(ev.date)}${ev.time?' · '+ev.time:''}${ev.venue?' · '+ev.venue:''}\n${url}`;
     if(navigator.share){ navigator.share({title:'THC · '+ev.title, text, url}).catch(()=>{}); } else { navigator.clipboard.writeText(text).then(()=>toast('Invite link copied')).catch(()=>toast(url)); } return; }
 });
@@ -382,12 +402,52 @@ function contribForm(id){ const c=id?{...S.contrib[id]}:{cause:Object.values(S.c
   $('#k-del')?.addEventListener('click', ev=>armConfirm(ev.target, ()=>db.doc('contributions/'+id).delete().then(closeSheet).catch(fail)));
 }
 
+// ---------- admin portal ----------
+function renderAdmin(){ if(!S.isAdmin||!S.user) return;
+  const rows=ledgerRows(); const cr=rows.reduce((s,r)=>s+(+r.credit||0),0), dr=rows.reduce((s,r)=>s+(+r.debit||0),0); const act=activeMembers();
+  let pendMonths=0; const defaulters=[]; act.forEach(([id,m])=>{ const pm=pendingMonths(m); if(pm.length){ pendMonths+=pm.length; defaulters.push({id,m,pm}); } });
+  defaulters.sort((x,y)=>y.pm.length-x.pm.length);
+  const thisM=rows.filter(r=>(r.date||'').startsWith(curMonth)&&r.credit>0); const paidThisMonth=act.filter(([,m])=>dueState(m,curMonth)==='paid').length;
+  const toVer=Object.values(S.payments).filter(p=>p.status==='pending').length;
+  $('#ad-sub').textContent=`${act.length} active members · fee ${INR(fee())} · register from ${mLong(months()[0])}`;
+  $('#ad-bal').textContent=INR(cr-dr); $('#ad-out').textContent=INR(pendMonths*fee()); $('#ad-out-sub').textContent=`${defaulters.length} members · ${pendMonths} member-months`;
+  $('#ad-m-lbl').textContent=mLong(curMonth); $('#ad-m').textContent=INR(thisM.reduce((s,r)=>s+r.credit,0)); $('#ad-m-sub').textContent=`${paidThisMonth} of ${act.length} paid for ${mLabel(curMonth)}`;
+  $('#ad-ver').textContent=toVer; $('#dl-month-sub').textContent=`${mLong(curMonth)} · ${thisM.length} credits`;
+  $('#admin-list').innerHTML=`<button class="row" id="a-pay"><span class="t">Payments to verify</span><span class="pill ${toVer?'pending':'paid'}">${toVer}</span></button>
+    <button class="row" id="a-record"><span class="t">Record a cash / bank payment</span><span class="d">›</span></button>
+    <button class="row" id="a-notice"><span class="t">Post a notice (push to all phones)</span><span class="d">›</span></button>
+    <button class="row" id="a-links"><span class="t">Member sign-in links</span><span class="d">›</span></button>
+    <button class="row" id="a-settings"><span class="t">Fee, UPI ID and admins</span><span class="d">›</span></button>
+    ${Object.keys(S.members).length?'':'<button class="row" id="a-import"><span class="t">Import the Excel register (first-time setup)</span><span class="d">›</span></button>'}`;
+  $('#a-pay').onclick=verifySheet; $('#a-record').onclick=()=>recordSheet(); $('#a-notice').onclick=()=>$('#notice-add').click(); $('#a-links').onclick=linksSheet; $('#a-settings').onclick=settingsSheet; $('#a-import')&&($('#a-import').onclick=importSeed);
+  $('#ad-defaulters').innerHTML=defaulters.length?defaulters.map(d=>`<button class="row" data-id="${d.id}"><div class="body"><div class="t">${esc(d.m.name)}</div><div class="d">${d.pm.map(mLabel).join(', ')}</div></div><span class="pill pending">${INR(d.pm.length*fee())}</span></button>`).join(''):'<div class="empty">Everyone is paid up.</div>';
+  S._defaulters=defaulters;
+}
+$('#ad-defaulters').addEventListener('click', e=>{ const b=e.target.closest('[data-id]'); if(b) memberSheet(b.dataset.id); });
+$('#ad-nudge').addEventListener('click', async ()=>{ const d=S._defaulters||[]; const txt=`THC dues pending as of ${fmtDate(isoToday)}:\n`+d.map(x=>`• ${x.m.name} – ${x.pm.map(mLabel).join(', ')} (${INR(x.pm.length*fee())})`).join('\n')+`\n\nPay from the app: ${location.origin+location.pathname}`; try{ await navigator.clipboard.writeText(txt); toast('Reminder list copied, paste in WhatsApp'); }catch{ toast('Could not copy'); } });
+const csvCell = v => { const s=String(v??''); return /[",\n]/.test(s)?'"'+s.replace(/"/g,'""')+'"':s; };
+function downloadCSV(name, rows){ const csv='\uFEFF'+rows.map(r=>r.map(csvCell).join(',')).join('\r\n'); const blob=new Blob([csv],{type:'text/csv;charset=utf-8'}); const u=URL.createObjectURL(blob); const a=document.createElement('a'); a.href=u; a.download=`THC-${name}-${isoToday}.csv`; document.body.appendChild(a); a.click(); setTimeout(()=>{ URL.revokeObjectURL(u); a.remove(); },500); toast('Downloading '+a.download); }
+$('#p-admin').addEventListener('click', e=>{ const b=e.target.closest('[data-dl]'); if(!b) return; const k=b.dataset.dl; const ms=months(); const rows=ledgerRows();
+  if(k==='status'){ const out=[['Member','Studio','Position','Status','Member since','Months due','Months paid','Outstanding ₹','Paid to date ₹','Pending months','Last payment date','Last payment particulars','Unverified months']];
+    allMembers().forEach(([id,m])=>{ const pm=pendingMonths(m); const paid=ms.filter(mo=>dueState(m,mo)==='paid'); const tot=paid.reduce((s,mo)=>s+(m.dues?.[mo]?.amt||fee()),0); const last=[...rows].reverse().find(r=>r.member===id||(r.particulars||'').toLowerCase().includes(m.name.toLowerCase())); const unv=ms.filter(mo=>m.dues?.[mo]?.unverified);
+      out.push([m.name,m.studio||'',m.position||'',m.status||'active',m.joined||'',ms.filter(mo=>dueState(m,mo)!=='na').length,paid.length,pm.length*fee(),tot,pm.map(mLabel).join('; '),last?.date||'',last?.particulars||'',unv.map(mLabel).join('; ')]); });
+    downloadCSV('payment-status',out); }
+  if(k==='matrix'){ const out=[['Member','Studio','Position',...ms.map(mLabel),'Paid ₹','Due ₹']]; const tot=ms.map(()=>0);
+    allMembers().forEach(([id,m])=>{ let paid=0,due=0; const cells=ms.map((mo,i)=>{ const st=dueState(m,mo); const amt=m.dues?.[mo]?.amt||fee(); if(st==='paid'){paid+=amt;tot[i]+=amt;return amt+(m.dues?.[mo]?.unverified?' (unverified)':'');} if(st==='pending'){due+=fee();return 'PENDING';} return st.toUpperCase(); }); out.push([m.name,m.studio||'',m.position||'',...cells,paid,due]); });
+    out.push(['Monthly total','','',...tot,tot.reduce((a,b)=>a+b,0),'']); downloadCSV('payment-summary',out); }
+  if(k==='ledger'){ let bal=0; downloadCSV('ledger',[['Date','Particulars','Credit','Debit','Balance','Type','Verified'],...rows.map(r=>{ bal+=(+r.credit||0)-(+r.debit||0); return [r.date,r.particulars,r.credit||0,r.debit||0,bal,r.type||'',r.verified===false?'NO':'yes']; })]); }
+  if(k==='month'){ const mr=rows.filter(r=>(r.date||'').startsWith(curMonth)); downloadCSV('collections-'+curMonth,[['Date','Particulars','Credit','Debit','Verified'],...mr.map(r=>[r.date,r.particulars,r.credit||0,r.debit||0,r.verified===false?'NO':'yes']),['','Total',mr.reduce((s,r)=>s+(+r.credit||0),0),mr.reduce((s,r)=>s+(+r.debit||0),0),'']]); }
+  if(k==='pending'){ const ps=Object.values(S.payments).filter(p=>p.status==='pending'); downloadCSV('pending-verifications',[['Date','Member','Paid by','Months','Amount','App','UTR','Note'],...ps.map(p=>[p.date,p.memberName,p.payerName||'',p.months.map(mLabel).join('; '),p.amount,p.app,p.utr||'',p.note||''])]); }
+  if(k==='contrib'){ downloadCSV('contributions',[['Cause','Contributor','Amount','Date','Status','Details'],...Object.values(S.contrib).sort((x,y)=>(x.seq||0)-(y.seq||0)).map(c=>[c.cause,c.name,c.amount,c.date||'',c.status,c.details||''])]); }
+  if(k==='members'){ downloadCSV('members',[['Name','Studio','Position','Status','Phone','Email','Website','Birthday','Anniversary','Address','Member since','Diet','Drinks','Allergies','Notes'],...allMembers().map(([,m])=>{ const p=m.profile?.prefs||{}; return [m.name,m.studio||'',m.position||'',m.status||'active',m.phone||'',m.email||'',m.website||'',m.birthday||'',m.anniversary||'',m.address||'',m.joined||'',p.diet||'',(p.drinks||[]).join('; '),p.allergies||'',p.notes||'']; })]); }
+});
+
 // ---------- account / admin sheets ----------
 function accountSheet(){ const u=S.user; const push=Notification?.permission;
-  openSheet(`<div class="sheet-h"><h2>Account</h2><button class="icon-btn" data-x>✕</button></div><div class="kv"><div>Signed in</div><div>${esc(u.displayName||'')}<br><span class="muted">${esc(u.email)}</span></div><div>Member record</div><div>${S.member?esc(S.member.name)+(S.member.email?.toLowerCase()===u.email.toLowerCase()||S.member.uid===u.uid?' <span class="pill paid">confirmed</span>':' <span class="pill pending">awaiting confirmation</span>'):'<button class="chip" id="ac-link">Link my record</button>'}</div><div>Role</div><div>${S.isAdmin?'Treasurer / admin':'Member'}</div>${S.memberId?`<div>Profile</div><div><button class="chip" id="ac-prof">${S.member?.profile?.bio?'Edit my profile':'Fill in my profile'}</button></div>`:''}<div>Notifications</div><div>${push==='granted'?'<span class="pill paid">On</span>':`<button class="chip" id="ac-push">Turn on</button>`}</div></div>
+  openSheet(`<div class="sheet-h"><h2>Account</h2><button class="icon-btn" data-x>✕</button></div><div class="kv"><div>Signed in</div><div>${esc(u.displayName||'')}<br><span class="muted">${esc(u.email)}</span></div><div>Member record</div><div>${S.member?esc(S.member.name)+(S.member.email?.toLowerCase()===u.email.toLowerCase()||S.member.uid===u.uid?' <span class="pill paid">confirmed</span>':' <span class="pill pending">awaiting confirmation</span>'):'<button class="chip" id="ac-link">Link my record</button>'}</div><div>Role</div><div>${S.isAdmin?'Treasurer / admin':'Member'}</div>${S.memberId?`<div>Food &amp; drink</div><div><button class="chip" id="ac-prefs">${S.member?.profile?.prefs?.diet?'Edit preferences':'Fill in preferences'}</button></div><div>Profile</div><div><button class="chip" id="ac-prof">${S.member?.profile?.bio?'Edit my profile':'Fill in my profile'}</button></div>`:''}<div>Notifications</div><div>${push==='granted'?'<span class="pill paid">On</span>':`<button class="chip" id="ac-push">Turn on</button>`}</div></div>
   ${!window.matchMedia('(display-mode: standalone)').matches?`<div class="banner" style="background:var(--fill);color:var(--fg)"><b>Install the app:</b> ${isIOS?'Safari → Share → Add to Home Screen.':'Chrome menu (⋮) → Add to Home screen / Install app.'}</div>`:''}
   <div class="sheet-f"><button class="btn ghost" id="ac-out">Sign out</button></div>`);
-  $('#ac-link')?.addEventListener('click',()=>{ closeSheet(); renderLink(); go('link'); }); $('#ac-prof')?.addEventListener('click',()=>profileForm(S.memberId)); $('#ac-push')?.addEventListener('click',async()=>{ await enablePush(); accountSheet(); }); $('#ac-out').onclick=()=>auth.signOut().then(closeSheet);
+  $('#ac-link')?.addEventListener('click',()=>{ closeSheet(); renderLink(); go('link'); }); $('#ac-prof')?.addEventListener('click',()=>profileForm(S.memberId)); $('#ac-prefs')?.addEventListener('click',()=>{ closeSheet(); renderPrefs(); go('prefs'); }); $('#ac-push')?.addEventListener('click',async()=>{ await enablePush(); accountSheet(); }); $('#ac-out').onclick=()=>auth.signOut().then(closeSheet);
 }
 function settingsSheet(){
   openSheet(`<div class="sheet-h"><h2>Register settings</h2><button class="icon-btn" data-x>✕</button></div><div class="frow"><div class="field"><label>Monthly fee (₹)</label><input id="s-fee" type="number" value="${fee()}"></div><div class="field"><label>First month</label><input id="s-start" type="month" value="${esc(S.settings.startMonth||'2025-08')}"></div></div><div class="frow"><div class="field"><label>THC UPI ID (members pay here)</label><input id="s-upi" value="${esc(S.settings.upiId||(C.UPI_ID&&!C.UPI_ID.startsWith('PASTE')?C.UPI_ID:''))}" placeholder="thc@okaxis"></div><div class="field"><label>Payee name</label><input id="s-upn" value="${esc(S.settings.upiName||C.UPI_NAME||'The Hyderabad Cartel')}"></div></div>

@@ -41,3 +41,12 @@ Create the event (a 4-digit check-in code is generated). At the venue, open Atte
 
 ## Event invitations
 Every event has a shareable landing page: `event.html?e=<event id>`. Tap **Share invite** on an event in the app to send it on WhatsApp. The page shows date, time, venue, notes, RSVP count and an Add-to-calendar button, and works without sign-in; RSVP itself happens in the app.
+
+## Admin tab (treasurer only)
+Balance, outstanding, this month's collections and the verification queue, plus CSV downloads: payment status by member, the member × month summary matrix, full ledger, this month's collections, pending verifications, contributions and the member directory. "Copy reminder list" copies a WhatsApp-ready list of defaulters.
+
+## Paying for someone else
+On the Pay screen tick more than one member (e.g. Ravi ticks Pallavi too). One UPI payment covers both; the app posts a separate ledger line per member, marked "paid by Ravi", all flagged unverified until the treasurer verifies the single UTR.
+
+## Food & drink
+Account → Food & drink. Diet, drinks, allergies and a usual order. On any event the host/admin taps **Catering** for a headcount by diet and drink among those who RSVP'd.

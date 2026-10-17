@@ -168,3 +168,6 @@ body:has(#p-signin.on) main{max-width:none;padding:0}
 .stat b{font-size:20px;font-weight:700;letter-spacing:-.02em}
 .stat span{font-size:12px;color:var(--muted);overflow:hidden;text-overflow:ellipsis}
 a.pill{text-decoration:none}
+
+.tabs button.admin{display:none}body.is-admin .tabs button.admin{display:flex}
+@media (min-width:600px){.tiles2.four{grid-template-columns:repeat(4,1fr)}}
