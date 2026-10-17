@@ -13,6 +13,8 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,500&display=swap">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -25,14 +27,23 @@
 </header>
 
 <main id="main">
-  <!-- SIGN IN -->
-  <section class="page on" id="p-signin">
-    <div class="hero">
-      <div class="mark big">THC</div>
-      <h1>The Hyderabad Cartel</h1>
-      <p class="muted">Dues, events and the ledger, in one place.</p>
-      <button class="btn" id="signin-google">Continue with Google</button>
-      <p class="small muted" id="signin-msg">Use the email the collective has on record for you.</p>
+  <!-- SIGN IN / INTRO -->
+  <section class="page on intro" id="p-signin">
+    <div class="noir">
+      <div class="noir-grain"></div>
+      <div class="noir-in">
+        <div class="noir-eyebrow">Est. Hyderabad · 2025</div>
+        <div class="noir-seal"><span>THC</span></div>
+        <h1 class="noir-title">The Hyderabad<br>Cartel</h1>
+        <p class="noir-tag">Twenty-two studios. One table. Every month.</p>
+        <ul class="noir-rules">
+          <li><b>I.</b> You pay your respects on the first of the month. Fifteen hundred. No excuses, no IOUs.</li>
+          <li><b>II.</b> You show up when the Family meets. The book remembers who sat at the table.</li>
+          <li><b>III.</b> The ledger is sacred. Only the Treasurer's word can change it.</li>
+        </ul>
+        <button class="btn noir-btn" id="signin-google">Take the oath · Sign in with Google</button>
+        <p class="noir-fine" id="signin-msg">Members only. Use the Google account the Family has on record.</p>
+      </div>
     </div>
   </section>
 
