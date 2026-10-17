@@ -32,7 +32,7 @@ service cloud.firestore {
       allow read: if signedIn();
       allow create, delete: if isAdmin();
       // Admin edits anything. A member may only touch their own `dues` map (self-recorded payment), nothing else.
-      allow update: if isAdmin() || (ownsMember(id) && onlyKeys(['dues']));
+      allow update: if isAdmin() || (ownsMember(id) && onlyKeys(['dues','profile']));
     }
 
     match /ledger/{id} {
