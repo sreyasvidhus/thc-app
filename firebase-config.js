@@ -13,6 +13,6 @@ self.THC_CONFIG = {
   VAPID_KEY: "PASTE_VAPID_PUBLIC_KEY",
   ADMIN_EMAILS: ["sreyas@fellowyellow.in", "sreyas1234@gmail.com"],
   // Collective's UPI ID that members pay into (shown in the Pay screen, pre-filled in GPay/PhonePe).
-  UPI_ID: "PASTE_THC_UPI_ID@bank",
-  UPI_NAME: "The Hyderabad Cartel"
+  UPI_ID: "sreyas1234-2@oksbi",
+  UPI_NAME: "Sreyas S"
 };
