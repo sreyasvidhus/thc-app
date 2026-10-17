@@ -54,10 +54,11 @@ service cloud.firestore {
     }
 
     match /events/{id} {
-      allow read: if signedIn();
+      // Public read so the shareable invitation page (event.html) works without sign-in.
+      allow read: if true;
       allow write: if isAdmin();
       match /rsvp/{memberId} {
-        allow read: if signedIn();
+        allow read: if true;
         allow write: if isAdmin() || (ownsMember(memberId) && request.resource.data.uid == request.auth.uid);
       }
       match /attendance/{memberId} {

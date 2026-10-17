@@ -77,7 +77,7 @@ auth.onAuthStateChanged(async user => {
   S.unsub.push(db.collection('events').orderBy('date','desc').limit(30).onSnapshot(s=>{ const o={}; s.forEach(d=>o[d.id]={...d.data(), rsvp:S.events[d.id]?.rsvp||{}, att:S.events[d.id]?.att||{}}); S.events=o; renderEvents(); renderHome(); subEventSubs(); }, fail));
   const payQ = S.isAdmin ? db.collection('payments').orderBy('createdAt','desc').limit(100) : db.collection('payments').where('uid','==',user.uid).orderBy('createdAt','desc').limit(30);
   S.unsub.push(payQ.onSnapshot(s=>{ const o={}; s.forEach(d=>o[d.id]=d.data()); S.payments=o; renderPayments(); renderHome(); }, e=>{ console.warn(e); }));
-  go('home'); $('#tabs').hidden=false;
+  go(location.hash==='#events'?'events':'home'); $('#tabs').hidden=false;
   setupPush();
 });
 $('#me-btn').addEventListener('click', ()=>{ if(S.user) accountSheet(); });
@@ -245,7 +245,7 @@ function eventCard(id,e){
   ${e.notes?`<div class="small" style="white-space:pre-wrap">${esc(e.notes)}</div>`:''}
   <div class="row-btns" style="justify-content:space-between"><span class="small muted">${going} going${past||att?` · ${att} attended`:''}</span>
   ${past ? (myA?'<span class="pill present">You attended</span>':'') : my ? `<div class="row-btns"><button class="chip ${myR?.going===true?'on':''}" data-rsvp="${id}" data-v="1">Going</button><button class="chip ${myR?.going===false?'on':''}" data-rsvp="${id}" data-v="0">Can't</button>${myA?'<span class="pill present">Checked in</span>':`<button class="btn sm" data-checkin="${id}">Check in</button>`}</div>` : ''}
-  ${S.isAdmin?`<button class="chip" data-att="${id}">Attendance</button>`:''}</div></div>`;
+  ${S.isAdmin?`<button class="chip" data-att="${id}">Attendance</button>`:''}<button class="chip" data-share="${id}">Share invite</button></div></div>`;
 }
 function renderEvents(){
   const list=Object.entries(S.events).sort((a,b)=>b[1].date.localeCompare(a[1].date)); const up=list.filter(([,e])=>e.date>=isoToday).reverse(), past=list.filter(([,e])=>e.date<isoToday);
@@ -256,6 +256,8 @@ document.addEventListener('click', async e=>{
   const c=e.target.closest('[data-checkin]'); if(c){ checkinSheet(c.dataset.checkin); return; }
   const ed=e.target.closest('[data-ev-edit]'); if(ed){ eventForm(ed.dataset.evEdit); return; }
   const at=e.target.closest('[data-att]'); if(at){ attendanceSheet(at.dataset.att); return; }
+  const sh=e.target.closest('[data-share]'); if(sh){ const ev=S.events[sh.dataset.share]; const url=new URL('event.html?e='+sh.dataset.share, location.href).href; const text=`THC · ${ev.title}\n${fmtDate(ev.date)}${ev.time?' · '+ev.time:''}${ev.venue?' · '+ev.venue:''}\n${url}`;
+    if(navigator.share){ navigator.share({title:'THC · '+ev.title, text, url}).catch(()=>{}); } else { navigator.clipboard.writeText(text).then(()=>toast('Invite link copied')).catch(()=>toast(url)); } return; }
 });
 function checkinSheet(id){ const e=S.events[id];
   openSheet(`<div class="sheet-h"><h2>Check in</h2><button class="icon-btn" data-x>✕</button></div><p class="muted">${esc(e.title)} · ${fmtDate(e.date)}</p><div class="field"><label>Enter the 4-digit code announced at the venue</label><input id="ci-code" inputmode="numeric" maxlength="4" style="font-size:28px;letter-spacing:.3em;text-align:center"></div><div class="sheet-f"><button class="btn" id="ci-go">Mark me present</button></div>`);

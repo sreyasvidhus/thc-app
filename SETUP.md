@@ -38,3 +38,6 @@ Notices, "event tomorrow" reminders and a dues nudge on the 5th are sent by a Gi
 
 ## Attendance
 Create the event (a 4-digit check-in code is generated). At the venue, open Attendance and read the code out; members tap Check in and enter it. You can also toggle anyone present/absent by hand.
+
+## Event invitations
+Every event has a shareable landing page: `event.html?e=<event id>`. Tap **Share invite** on an event in the app to send it on WhatsApp. The page shows date, time, venue, notes, RSVP count and an Add-to-calendar button, and works without sign-in; RSVP itself happens in the app.
