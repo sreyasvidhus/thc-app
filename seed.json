@@ -1,0 +1,2582 @@
+{
+ "members": {
+  "faisal-vohra": {
+   "name": "Faisal Vohra",
+   "studio": "F+S Designs",
+   "position": "Chair",
+   "phone": "9100010010",
+   "email": "design@fpluss.in",
+   "website": "www.fpluss.in",
+   "birthday": "1985-02-28",
+   "anniversary": "2012-08-31",
+   "address": "8-2-596/7, Flat 2, Ground Floor, Road 10, Banjara Hills, Hyderabad, Telangana- 500034.",
+   "joined": "2025-08",
+   "status": "active",
+   "order": 1,
+   "dues": {
+    "2025-08": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-09": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-10": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-11": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-12": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-01": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-02": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-03": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-04": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-05": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-06": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-07": {
+     "s": "paid",
+     "amt": 1500
+    }
+   }
+  },
+  "sourojit-ghosh": {
+   "name": "Sourojit Ghosh",
+   "studio": "Hanging Hammer",
+   "position": "Media & PR",
+   "phone": "9849624101",
+   "email": "sourojit.ghosh@hanginghammer.com",
+   "website": "www.hanginghammer.com",
+   "birthday": "1980-08-24",
+   "anniversary": "2006-01-22",
+   "address": "E3403, E-Block, My Home Bhooja, Silpa Gram Craft Village, Rai Durg, Hyderabad, Telangana-\u00a0500032",
+   "joined": "2025-08",
+   "status": "active",
+   "order": 2,
+   "dues": {
+    "2025-08": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-09": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-10": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-11": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-12": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-01": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-02": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-03": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-05": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-06": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-07": {
+     "s": "paid",
+     "amt": 1500
+    }
+   }
+  },
+  "shweta-balasubramoni": {
+   "name": "Shweta Balasubramoni",
+   "studio": "Vistaar Associates",
+   "position": "Research",
+   "phone": "9885675151",
+   "email": "shweta@vistaarassociates.net",
+   "website": "www.vistaarassociates.com",
+   "birthday": "1981-11-25",
+   "anniversary": null,
+   "address": "8-2-310/B/11/1 , Deccan Abode, No. 14, Nandi Nagar Rd, GS Nagar, Nandi Nagar, Banjara Hills, Hyderabad, Telangana- 500034",
+   "joined": "2025-08",
+   "status": "active",
+   "order": 3,
+   "dues": {
+    "2025-08": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-09": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-10": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-11": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-12": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-01": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-03": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-04": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-05": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-06": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-07": {
+     "s": "paid",
+     "amt": 1500
+    }
+   }
+  },
+  "amulya-gullapalli": {
+   "name": "Amulya Gullapalli",
+   "studio": "Design Dialogue",
+   "position": "Member",
+   "phone": "8008931818",
+   "email": "ag@designdialoguestudio.com",
+   "website": "www.designdialoguestudio.com",
+   "birthday": "1991-08-18",
+   "anniversary": "2020-11-25",
+   "address": "H No 8/2/293/82/J/A/33, Journalist Colony, Nandagiri Hills, Hyderabad, Telangana - 500033 India.",
+   "joined": "2025-11",
+   "status": "active",
+   "order": 4,
+   "dues": {
+    "2025-08": {
+     "s": "na"
+    },
+    "2025-09": {
+     "s": "na"
+    },
+    "2025-10": {
+     "s": "na"
+    },
+    "2025-11": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-12": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-01": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-02": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-03": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-04": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-05": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-06": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-07": {
+     "s": "paid",
+     "amt": 1500
+    }
+   }
+  },
+  "geethu-gangadharan": {
+   "name": "Geethu Gangadharan",
+   "studio": "Fellow Yellow",
+   "position": "Member",
+   "phone": "8547573804",
+   "email": "geethu@fellowyellow.in",
+   "website": "www.fellowyellow.in",
+   "birthday": "1991-05-15",
+   "anniversary": "2015-05-09",
+   "address": "15/31 and 32, 8A, Sudarshan Nagar Colony,Serlingampally , Hyderabad",
+   "joined": "2025-08",
+   "status": "active",
+   "order": 5,
+   "dues": {
+    "2025-08": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-09": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-10": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-11": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-12": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-01": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-02": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-03": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-04": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-05": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-06": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-07": {
+     "s": "paid",
+     "amt": 1500
+    }
+   }
+  },
+  "ibrahim-ahmed": {
+   "name": "Ibrahim Ahmed",
+   "studio": "Ulysses Design Studio",
+   "position": "Member",
+   "phone": "9885367641",
+   "email": "ulyssesdesignstudio@gmail.com",
+   "website": "https://www.instagram.com/ulysses.designs/",
+   "birthday": "1993-12-06",
+   "anniversary": null,
+   "address": "4th Floor Banjara hills Road no.11 , Silver Tower, Telangana 500034",
+   "joined": "2025-08",
+   "status": "active",
+   "order": 6,
+   "dues": {
+    "2025-08": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-09": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-10": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-11": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-12": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-01": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-02": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-03": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-04": {
+     "s": "paid",
+     "amt": 1500
+    }
+   }
+  },
+  "ibrahim-khan": {
+   "name": "Ibrahim Khan",
+   "studio": "Gains",
+   "position": "Member",
+   "phone": "9642523520",
+   "email": "architecturalgains@gmail.com",
+   "website": "www.architecturalgains.com",
+   "birthday": "1986-11-21",
+   "anniversary": null,
+   "address": "#1, Third Floor, Plot 13, Road No 13, Banjara Hills, Hyderabad, Telangana- 500034",
+   "joined": "2025-08",
+   "status": "active",
+   "order": 7,
+   "dues": {
+    "2025-08": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-09": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-10": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-11": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-12": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-01": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-02": {
+     "s": "cc"
+    },
+    "2026-03": {
+     "s": "cc"
+    },
+    "2026-04": {
+     "s": "cc"
+    },
+    "2026-05": {
+     "s": "cc"
+    },
+    "2026-06": {
+     "s": "cc"
+    },
+    "2026-07": {
+     "s": "cc"
+    },
+    "2026-08": {
+     "s": "cc"
+    }
+   }
+  },
+  "kasi-raju": {
+   "name": "Kasi Raju",
+   "studio": "Prelab Design Studio",
+   "position": "Member",
+   "phone": "9618261012",
+   "email": null,
+   "website": null,
+   "birthday": null,
+   "anniversary": null,
+   "address": null,
+   "joined": "2025-08",
+   "status": "active",
+   "order": 8,
+   "dues": {
+    "2025-08": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-09": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-10": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-11": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-12": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-01": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-02": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-03": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-04": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-05": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-06": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-07": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-08": {
+     "s": "paid",
+     "amt": 1500
+    }
+   }
+  },
+  "mathan-ramaiah": {
+   "name": "Mathan Ramaiah",
+   "studio": "FHD Pvt. Ltd.",
+   "position": "Member",
+   "phone": "9448262594",
+   "email": "mathan@fhdgroup.in",
+   "website": "www.fhdindia.com",
+   "birthday": "1979-09-11",
+   "anniversary": null,
+   "address": "Plot No: 15, 8-3, 684/3-15, Lane Number 3, Sri Nagar Colony, LIC Colony, Hyderabad, Telangana- 500073",
+   "joined": "2025-08",
+   "status": "active",
+   "order": 9,
+   "dues": {
+    "2025-08": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-09": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-10": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-11": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-12": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-01": {
+     "s": "paid",
+     "amt": 1600
+    },
+    "2026-02": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-03": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-04": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-05": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-06": {
+     "s": "paid",
+     "amt": 1500
+    }
+   }
+  },
+  "meryl-savithry": {
+   "name": "Meryl Savithry",
+   "studio": "Savithry Design Studio",
+   "position": "Member",
+   "phone": "9177475033",
+   "email": "savithrystudio@gmail.com",
+   "website": "www.savi3studio.com",
+   "birthday": "1992-02-12",
+   "anniversary": "2017-02-06",
+   "address": "1-100/38/1/2/A Gopanpally , sai Kiran apartment 402.",
+   "joined": "2025-08",
+   "status": "active",
+   "order": 10,
+   "dues": {
+    "2025-08": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-09": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-10": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-11": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-12": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-01": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-02": {
+     "s": "paid",
+     "amt": 1500
+    }
+   }
+  },
+  "neelesh-kumar": {
+   "name": "Neelesh Kumar",
+   "studio": "23 Degree Design Shift",
+   "position": "Member",
+   "phone": "9177475033",
+   "email": null,
+   "website": null,
+   "birthday": null,
+   "anniversary": null,
+   "address": null,
+   "joined": "2025-08",
+   "status": "active",
+   "order": 11,
+   "dues": {
+    "2025-08": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-09": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-10": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-11": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-12": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-01": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-02": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-03": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-04": {
+     "s": "paid",
+     "amt": 1500
+    }
+   }
+  },
+  "pallavi-anchuri": {
+   "name": "Pallavi Anchuri",
+   "studio": "Anchuri Design World",
+   "position": "Member",
+   "phone": "9849007272",
+   "email": "anchuripallavi@yahoo.com",
+   "website": "www.anchuridesignworld.com",
+   "birthday": "1974-02-15",
+   "anniversary": "1997-11-27",
+   "address": "Pl no. 31/32, Laxmi Ganga Enclave, Jeedimetla village, Hyderabad",
+   "joined": "2025-08",
+   "status": "active",
+   "order": 12,
+   "dues": {
+    "2025-08": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-09": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-10": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-11": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-12": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-01": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-02": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-03": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-04": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-05": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-06": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-07": {
+     "s": "paid",
+     "amt": 1500
+    }
+   }
+  },
+  "pavan-suryadeva": {
+   "name": "Pavan Suryadeva",
+   "studio": "Clark Loyd Architects",
+   "position": "Chair",
+   "phone": "9963067799",
+   "email": "pavansdevara@googlemail.com",
+   "website": "www.clarklloyd.com",
+   "birthday": "1977-03-24",
+   "anniversary": "2006-02-22",
+   "address": "6-3-252/2/6/1, Errananzil , Banjara Hills , Hyderabad, Telangana-500082",
+   "joined": "2025-08",
+   "status": "active",
+   "order": 13,
+   "dues": {
+    "2025-08": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-09": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-10": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-11": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-12": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-01": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-02": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-03": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-04": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-05": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-06": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-07": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-08": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-09": {
+     "s": "paid",
+     "amt": 1500
+    }
+   }
+  },
+  "prashanthi-n": {
+   "name": "Prashanthi N",
+   "studio": "Design Dialogue",
+   "position": "Member",
+   "phone": "8897614118",
+   "email": null,
+   "website": null,
+   "birthday": null,
+   "anniversary": null,
+   "address": null,
+   "joined": "2025-11",
+   "status": "active",
+   "order": 14,
+   "dues": {
+    "2025-08": {
+     "s": "na"
+    },
+    "2025-09": {
+     "s": "na"
+    },
+    "2025-10": {
+     "s": "na"
+    },
+    "2025-11": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-12": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-01": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-02": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-03": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-04": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-05": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-06": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-07": {
+     "s": "paid",
+     "amt": 1500
+    }
+   }
+  },
+  "priyanka-narula": {
+   "name": "Priyanka Narula",
+   "studio": "Wicker Story",
+   "position": "Member",
+   "phone": "7838245562",
+   "email": null,
+   "website": null,
+   "birthday": null,
+   "anniversary": null,
+   "address": null,
+   "joined": "2025-08",
+   "status": "active",
+   "order": 15,
+   "dues": {
+    "2025-08": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-09": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-10": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-11": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-12": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-01": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-02": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-03": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-04": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-05": {
+     "s": "paid",
+     "amt": 1500
+    }
+   }
+  },
+  "purna-ghosh": {
+   "name": "Purna Ghosh",
+   "studio": "Hanging Hammer",
+   "position": "Member",
+   "phone": "9000445598",
+   "email": "purna.ghosh@hanginghammer.com",
+   "website": "www.hanginghammer.com",
+   "birthday": "1979-08-02",
+   "anniversary": "2006-01-22",
+   "address": "E3403, E-Block, My Home Bhooja, Silpa Gram Craft Village, Rai Durg, Hyderabad, Telangana-\u00a0500032",
+   "joined": "2025-08",
+   "status": "active",
+   "order": 16,
+   "dues": {
+    "2025-08": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-09": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-10": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-11": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-12": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-01": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-02": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-03": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-04": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-05": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-06": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-07": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-08": {
+     "s": "paid",
+     "amt": 1500
+    }
+   }
+  },
+  "ravi-anchuri": {
+   "name": "Ravi Anchuri",
+   "studio": "Anchuri Design World",
+   "position": "Member",
+   "phone": "9456547272",
+   "email": "ravianchuri@zohomail.com",
+   "website": "www.anchuridesignworld.com",
+   "birthday": "1971-04-10",
+   "anniversary": "1997-11-27",
+   "address": "Pl no. 31/32, Laxmi Ganga Enclave, Jeedimetla village, Hyderabad",
+   "joined": "2025-08",
+   "status": "active",
+   "order": 17,
+   "dues": {
+    "2025-08": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-09": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-10": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-11": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-12": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-01": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-02": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-03": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-04": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-05": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-06": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-07": {
+     "s": "paid",
+     "amt": 1500
+    }
+   }
+  },
+  "sreyas-vidhu": {
+   "name": "Sreyas Vidhu",
+   "studio": "Fellow Yellow",
+   "position": "Member",
+   "phone": "9400056105",
+   "email": "sreyas@fellowyellow.in",
+   "website": "www.fellowyellow.in",
+   "birthday": "1988-12-23",
+   "anniversary": "2015-05-09",
+   "address": "15/31 and 32, 8A, Sudarshan Nagar Colony, Serlingampally , Hyderabad",
+   "joined": "2025-08",
+   "status": "active",
+   "order": 18,
+   "dues": {
+    "2025-08": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-09": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-10": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-11": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-12": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-01": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-02": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-03": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-04": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-05": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-06": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-07": {
+     "s": "paid",
+     "amt": 1500
+    }
+   }
+  },
+  "srikanth-reddy": {
+   "name": "Srikanth Reddy",
+   "studio": "23 Degree Design Shift",
+   "position": "Member",
+   "phone": "9989795008",
+   "email": null,
+   "website": null,
+   "birthday": null,
+   "anniversary": null,
+   "address": null,
+   "joined": "2025-08",
+   "status": "active",
+   "order": 19,
+   "dues": {
+    "2025-08": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-09": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-10": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-11": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-12": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-01": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-02": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-03": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-04": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-05": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-06": {
+     "s": "paid",
+     "amt": 1500
+    }
+   }
+  },
+  "srinivas-murthy-g": {
+   "name": "Srinivas Murthy G.",
+   "studio": "SMG",
+   "position": "Member",
+   "phone": "9848191704",
+   "email": null,
+   "website": null,
+   "birthday": null,
+   "anniversary": null,
+   "address": null,
+   "joined": "2025-09",
+   "status": "active",
+   "order": 20,
+   "dues": {
+    "2025-08": {
+     "s": "na"
+    },
+    "2025-09": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-10": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-11": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2025-12": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-01": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-02": {
+     "s": "paid",
+     "amt": 1500
+    }
+   }
+  },
+  "shamila-meeran": {
+   "name": "Shamila Meeran",
+   "studio": "F+S Designs",
+   "position": "Member",
+   "phone": null,
+   "email": null,
+   "website": null,
+   "birthday": null,
+   "anniversary": null,
+   "address": null,
+   "joined": "2026-04",
+   "status": "active",
+   "order": 21,
+   "dues": {
+    "2025-08": {
+     "s": "na"
+    },
+    "2025-09": {
+     "s": "na"
+    },
+    "2025-10": {
+     "s": "na"
+    },
+    "2025-11": {
+     "s": "na"
+    },
+    "2025-12": {
+     "s": "na"
+    },
+    "2026-01": {
+     "s": "na"
+    },
+    "2026-02": {
+     "s": "na"
+    },
+    "2026-03": {
+     "s": "na"
+    },
+    "2026-04": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-05": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-06": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-07": {
+     "s": "paid",
+     "amt": 1500
+    }
+   }
+  },
+  "shravanthi-kolluri": {
+   "name": "Shravanthi Kolluri",
+   "studio": "Essen Architects",
+   "position": "Member",
+   "phone": null,
+   "email": null,
+   "website": null,
+   "birthday": null,
+   "anniversary": null,
+   "address": null,
+   "joined": "2026-04",
+   "status": "active",
+   "order": 22,
+   "dues": {
+    "2025-08": {
+     "s": "na"
+    },
+    "2025-09": {
+     "s": "na"
+    },
+    "2025-10": {
+     "s": "na"
+    },
+    "2025-11": {
+     "s": "na"
+    },
+    "2025-12": {
+     "s": "na"
+    },
+    "2026-01": {
+     "s": "na"
+    },
+    "2026-02": {
+     "s": "na"
+    },
+    "2026-03": {
+     "s": "na"
+    },
+    "2026-04": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-05": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-06": {
+     "s": "paid",
+     "amt": 1500
+    },
+    "2026-07": {
+     "s": "paid",
+     "amt": 1500
+    }
+   }
+  }
+ },
+ "ledger": {
+  "L001": {
+   "date": "2025-07-28",
+   "particulars": "August '25 payment from Faisal Vohra",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 1
+  },
+  "L002": {
+   "date": "2025-07-28",
+   "particulars": "August '25 payment from Pavan Suryadeva",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 2
+  },
+  "L003": {
+   "date": "2025-07-28",
+   "particulars": "August '25 payment from Sourojit Ghosh",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 3
+  },
+  "L004": {
+   "date": "2025-07-28",
+   "particulars": "August '25 payment from Purna Ghosh",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 4
+  },
+  "L005": {
+   "date": "2025-07-28",
+   "particulars": "August '25 payment from Meryl Savithry",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 5
+  },
+  "L006": {
+   "date": "2025-07-28",
+   "particulars": "August '25 payment from Geethu Gangadharan",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 6
+  },
+  "L007": {
+   "date": "2025-07-28",
+   "particulars": "August '25 payment from Sreyas Vidhu",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 7
+  },
+  "L008": {
+   "date": "2025-07-28",
+   "particulars": "August '25 payment from Shweta Balasubramoni",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 8
+  },
+  "L009": {
+   "date": "2025-07-28",
+   "particulars": "August '25 payment from Kasi Raju",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 9
+  },
+  "L010": {
+   "date": "2025-07-28",
+   "particulars": "August '25 payment from Ibrahim Ahmed",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 10
+  },
+  "L011": {
+   "date": "2025-07-28",
+   "particulars": "August '25 payment from Ibrahim Khan",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 11
+  },
+  "L012": {
+   "date": "2025-07-29",
+   "particulars": "August '25 payment from Pallavi Anchuri",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 12
+  },
+  "L013": {
+   "date": "2025-07-29",
+   "particulars": "August '25 payment from Ravi Anchuri",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 13
+  },
+  "L014": {
+   "date": "2025-07-29",
+   "particulars": "August '25 payment from Srikanth Reddy",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 14
+  },
+  "L015": {
+   "date": "2025-07-29",
+   "particulars": "August '25 payment from Mathan Ramiah",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 15
+  },
+  "L016": {
+   "date": "2025-07-30",
+   "particulars": "August '25 payment from Neelesh Kumar",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 16
+  },
+  "L017": {
+   "date": "2025-08-12",
+   "particulars": "August '25 payment from Priyanka Narula",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 17
+  },
+  "L018": {
+   "date": "2025-08-20",
+   "particulars": "September '25 payment from Faisal Vohra",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 18
+  },
+  "L019": {
+   "date": "2025-08-24",
+   "particulars": "September '25 payment from Srinivas Murthy G.",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 19
+  },
+  "L020": {
+   "date": "2025-08-26",
+   "particulars": "September '25 payment from Purna Ghosh",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 20
+  },
+  "L021": {
+   "date": "2025-08-26",
+   "particulars": "September '25 payment from Pavan Suryadeva",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 21
+  },
+  "L022": {
+   "date": "2025-08-26",
+   "particulars": "September '25 payment from Shweta Balasubramoni",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 22
+  },
+  "L023": {
+   "date": "2025-08-26",
+   "particulars": "September '25 payment from Shreyas Vighu",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 23
+  },
+  "L024": {
+   "date": "2025-08-26",
+   "particulars": "September '25 payment from Geethu Gangadharan",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 24
+  },
+  "L025": {
+   "date": "2025-08-26",
+   "particulars": "September '25 payment from Sourojit Ghosh",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 25
+  },
+  "L026": {
+   "date": "2025-08-29",
+   "particulars": "September '25 payment from Ravi Anchuri",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 26
+  },
+  "L027": {
+   "date": "2025-08-29",
+   "particulars": "September '25 payment from Pallavi Anchuri",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 27
+  },
+  "L028": {
+   "date": "2025-08-29",
+   "particulars": "September '25 payment from Ibrahim Khan",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 28
+  },
+  "L029": {
+   "date": "2025-08-29",
+   "particulars": "September '25 payment from Neelesh Kumar",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 29
+  },
+  "L030": {
+   "date": "2025-08-29",
+   "particulars": "September '25 payment from Meryl Savithry",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 30
+  },
+  "L031": {
+   "date": "2025-08-29",
+   "particulars": "September '25 payment from Srikanth Reddy",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 31
+  },
+  "L032": {
+   "date": "2025-08-29",
+   "particulars": "September '25 payment from Mathan Ramaiah",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 32
+  },
+  "L033": {
+   "date": "2025-08-29",
+   "particulars": "September '25 payment from Ibrahim Ahmed",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 33
+  },
+  "L034": {
+   "date": "2025-08-29",
+   "particulars": "September '25 payment from Kasi Raju",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 34
+  },
+  "L035": {
+   "date": "2025-09-01",
+   "particulars": "September '25 payment from Priyanka Narula",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 35
+  },
+  "L036": {
+   "date": "2025-09-11",
+   "particulars": "Purchase of (thehyderabadcartel.com) URL from GoDaddy by Sourojit Ghosh",
+   "credit": 0,
+   "debit": 3602,
+   "type": "expense",
+   "seq": 36
+  },
+  "L037": {
+   "date": "2025-09-20",
+   "particulars": "October '25 payment from Faisal Vohra",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 37
+  },
+  "L038": {
+   "date": "2025-09-20",
+   "particulars": "October '25 payment from Neelesh Kumar",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 38
+  },
+  "L039": {
+   "date": "2025-09-20",
+   "particulars": "October '25 payment from Purna Ghosh",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 39
+  },
+  "L040": {
+   "date": "2025-09-22",
+   "particulars": "October '25 payment from Srinivas Murthy",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 40
+  },
+  "L041": {
+   "date": "2025-09-22",
+   "particulars": "October '25 payment from Sreyas Vidhu",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 41
+  },
+  "L042": {
+   "date": "2025-09-22",
+   "particulars": "October '25 payment from Geetu Gangadharan",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 42
+  },
+  "L043": {
+   "date": "2025-09-22",
+   "particulars": "October '25 payment from Shweta Balasubramoni",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 43
+  },
+  "L044": {
+   "date": "2025-09-24",
+   "particulars": "October '25 payment from Sourojit Ghosh",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 44
+  },
+  "L045": {
+   "date": "2025-09-24",
+   "particulars": "October '25 payment from Pavan Suryadeva",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 45
+  },
+  "L046": {
+   "date": "2025-09-29",
+   "particulars": "October '25 payment from Mathan Ramaiah",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 46
+  },
+  "L047": {
+   "date": "2025-10-08",
+   "particulars": "October '25 payment from Meryl Savithri",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 47
+  },
+  "L048": {
+   "date": "2025-10-08",
+   "particulars": "October '25 payment from Ibrahim Khan",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 48
+  },
+  "L049": {
+   "date": "2025-10-09",
+   "particulars": "October '25 payment from Priyanka Narula",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 49
+  },
+  "L050": {
+   "date": "2025-10-09",
+   "particulars": "October '25 payment from Pallavi Anchuri",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 50
+  },
+  "L051": {
+   "date": "2025-10-09",
+   "particulars": "October '25 payment from Ibrahim Ahmed",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 51
+  },
+  "L052": {
+   "date": "2025-10-09",
+   "particulars": "October '25 payment from Ravi Anchuri",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 52
+  },
+  "L053": {
+   "date": "2025-10-12",
+   "particulars": "November '25 payment from Neelesh Kumar",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 53
+  },
+  "L054": {
+   "date": "2025-10-25",
+   "particulars": "November '25 payment from Faisal Vohra",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 54
+  },
+  "L055": {
+   "date": "2025-10-25",
+   "particulars": "November '25 payment from Srinivas Murthy",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 55
+  },
+  "L056": {
+   "date": "2025-10-25",
+   "particulars": "November '25 payment from Purna Ghosh",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 56
+  },
+  "L057": {
+   "date": "2025-10-25",
+   "particulars": "November '25 payment from Meryl Savithri",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 57
+  },
+  "L058": {
+   "date": "2025-10-25",
+   "particulars": "November '25 payment from Priyanka Narula",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 58
+  },
+  "L059": {
+   "date": "2025-10-25",
+   "particulars": "October '25 payment from Kasi Raju",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 59
+  },
+  "L060": {
+   "date": "2025-10-26",
+   "particulars": "November '25 payment from Amulya Gullapalli",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 60
+  },
+  "L061": {
+   "date": "2025-10-26",
+   "particulars": "November '25 payment from Pranshanti N.",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 61
+  },
+  "L062": {
+   "date": "2025-10-26",
+   "particulars": "November '25 payment from Shreyas Vidhu",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 62
+  },
+  "L063": {
+   "date": "2025-10-26",
+   "particulars": "November '25 payment from Geetu Gangadharan",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 63
+  },
+  "L064": {
+   "date": "2025-10-26",
+   "particulars": "November '25 payment from Shweta Balasubramoni",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 64
+  },
+  "L065": {
+   "date": "2025-10-26",
+   "particulars": "November '25 payment from Ravi Anchuri",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 65
+  },
+  "L066": {
+   "date": "2025-10-26",
+   "particulars": "November '25 payment from Pallavi Anchuri",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 66
+  },
+  "L067": {
+   "date": "2025-10-27",
+   "particulars": "November '25 payment from Pavan Suryadeva",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 67
+  },
+  "L068": {
+   "date": "2025-10-28",
+   "particulars": "November '25 payment from Ibrahim Ahmed",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 68
+  },
+  "L069": {
+   "date": "2025-11-01",
+   "particulars": "November '25 payment from Sourojit Ghosh",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 69
+  },
+  "L070": {
+   "date": "2025-11-01",
+   "particulars": "November '25 payment from Mathan Ramaiah",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 70
+  },
+  "L071": {
+   "date": "2025-11-10",
+   "particulars": "December '25 payment from Sreyas Vidhu",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 71
+  },
+  "L072": {
+   "date": "2025-11-10",
+   "particulars": "December '25 payment from Geethu Gangadharan",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 72
+  },
+  "L073": {
+   "date": "2025-11-10",
+   "particulars": "December '25 payment from Shweta Balasumbramoni",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 73
+  },
+  "L074": {
+   "date": "2025-11-10",
+   "particulars": "November '25 payment from Ibrahim Khan",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 74
+  },
+  "L075": {
+   "date": "2025-11-10",
+   "particulars": "October, November & December '25 payment from Srikanth Reddy",
+   "credit": 4500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 75
+  },
+  "L076": {
+   "date": "2025-11-15",
+   "particulars": "December '25 payment from Fasial Vohra",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 76
+  },
+  "L077": {
+   "date": "2025-11-15",
+   "particulars": "December '25 payment from Neelesh Kumar",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 77
+  },
+  "L078": {
+   "date": "2025-11-15",
+   "particulars": "December '25 payment from Purna Ghosh",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 78
+  },
+  "L079": {
+   "date": "2025-11-15",
+   "particulars": "December '25 payment from Ibrahim Khan",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 79
+  },
+  "L080": {
+   "date": "2025-11-15",
+   "particulars": "December '25 payment from Srinivas Murthy",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 80
+  },
+  "L081": {
+   "date": "2025-11-15",
+   "particulars": "December '25 payment from Prashanthi N.",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 81
+  },
+  "L082": {
+   "date": "2025-11-15",
+   "particulars": "December '25 payment from Amulya G.",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 82
+  },
+  "L083": {
+   "date": "2025-11-22",
+   "particulars": "December '25 payment from Pavan Suryadeva",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 83
+  },
+  "L084": {
+   "date": "2025-11-22",
+   "particulars": "December '25 payment from Mathan Ramaiah",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 84
+  },
+  "L085": {
+   "date": "2025-11-25",
+   "particulars": "December '25 payment from Sourojit Ghosh",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 85
+  },
+  "L086": {
+   "date": "2025-12-15",
+   "particulars": "November, December '25 payment from Kasi Raju",
+   "credit": 3000,
+   "debit": 0,
+   "type": "dues",
+   "seq": 86
+  },
+  "L087": {
+   "date": "2025-12-15",
+   "particulars": "December '25 payment from Pallavi Anchuri",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 87
+  },
+  "L088": {
+   "date": "2025-12-15",
+   "particulars": "December '25 payment from Ravi Anchuri",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 88
+  },
+  "L089": {
+   "date": "2025-12-18",
+   "particulars": "December '25 payment from Ibrahim Ahmed",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 89
+  },
+  "L090": {
+   "date": "2025-12-18",
+   "particulars": "January '26 payment from Ibrahim Khan",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 90
+  },
+  "L091": {
+   "date": "2026-01-27",
+   "particulars": "UPI-SHWETA BALASUBRAMONI-SHWETA251181@OKAXIS-UTIB0000008-639376373131-UPI",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 91
+  },
+  "L092": {
+   "date": "2026-01-27",
+   "particulars": "UPI-SOUROJIT GHOSH-SOUROJIT.GHOSH@OKHDFCBANK-HDFC0000545-117767075605-THC  JAN 2026",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 92
+  },
+  "L093": {
+   "date": "2026-01-27",
+   "particulars": "UPI-PURNA  GHOSH-PURNA.GHOSH@OKSBI-SBIN0012941-602751295420-PURNA JAN 2026",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 93
+  },
+  "L094": {
+   "date": "2026-02-12",
+   "particulars": "UPI-R P MATHAN-MATHANRAMAIAH-1@OKHDFCBANK-HDFC0009383-118533677984-UPI",
+   "credit": 1600,
+   "debit": 0,
+   "type": "dues",
+   "seq": 94
+  },
+  "L095": {
+   "date": "2026-02-20",
+   "particulars": "UPI-PAVAN KUMAR SURYADEV-PAVANSDEVARA-GOOGLEMAIL.COM@OKAXIS-UTIB0000515-605166286905-UPI",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 95
+  },
+  "L096": {
+   "date": "2026-02-20",
+   "particulars": "UPI-PAVAN KUMAR SURYADEV-PAVANSDEVARA-GOOGLEMAIL.COM@OKAXIS-UTIB0000515-605139470798-UPI",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 96
+  },
+  "L097": {
+   "date": "2026-02-20",
+   "particulars": "UPI-AVUTHU SRIKANTH REDD-ASREDDYHERE@OKAXIS-UTIB0001379-605104463080-UPI",
+   "credit": 3000,
+   "debit": 0,
+   "type": "dues",
+   "seq": 97
+  },
+  "L098": {
+   "date": "2026-02-20",
+   "particulars": "UPI-GANNAVARAPU SRINIVAS-SMG.SMGDESIGN@OKSBI-SBIN0015084-605156050962-THC  JAN FEB",
+   "credit": 3000,
+   "debit": 0,
+   "type": "dues",
+   "seq": 98
+  },
+  "L099": {
+   "date": "2026-02-20",
+   "particulars": "UPI-F PLUS S DESIGNS-FAISAL.A.VOHRA@OKAXIS-HDFC0000521-605131189849-THC CHARGES",
+   "credit": 3000,
+   "debit": 0,
+   "type": "dues",
+   "seq": 99
+  },
+  "L100": {
+   "date": "2026-02-20",
+   "particulars": "UPI-AMULYA GULLAPALLI-AR.AMULYA18-1@OKHDFCBANK-HDFC0007059-118900618832-UPI",
+   "credit": 3000,
+   "debit": 0,
+   "type": "dues",
+   "seq": 100
+  },
+  "L101": {
+   "date": "2026-02-20",
+   "particulars": "UPI-PRASHANTHI NARAPASET-PRASHANTHI19@OKICICI-ICIC0000075-641707927997-THC JAN  FEB",
+   "credit": 3000,
+   "debit": 0,
+   "type": "dues",
+   "seq": 101
+  },
+  "L102": {
+   "date": "2026-02-20",
+   "particulars": "UPI-IBRAHIM  AHMED-IBRAHIM.ARCHITECTURE@OKSBI-SBIN0020061-605158594607-UPI",
+   "credit": 3000,
+   "debit": 0,
+   "type": "dues",
+   "seq": 102
+  },
+  "L103": {
+   "date": "2026-02-20",
+   "particulars": "UPI-MUDDAMALLE MERYL SAV-MERYLSAVITHRY@OKICICI-ICIC0000370-641782724496-UPI",
+   "credit": 4500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 103
+  },
+  "L104": {
+   "date": "2026-03-09",
+   "particulars": "UPI-PURNA  GHOSH-PURNA.GHOSH@OKSBI-SBIN0012941-606851604558-FOR THC FEB 2026",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 104
+  },
+  "L105": {
+   "date": "2026-03-18",
+   "particulars": "UPI-PAVAN KUMAR SURYADEV-PAVANSDEVARA-GOOGLEMAIL.COM@OKAXIS-UTIB0000515-607714392049-UPI",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 105
+  },
+  "L106": {
+   "date": "2026-03-19",
+   "particulars": "UPI-SHWETA BALASUBRAMONI-SHWETA251181@OKAXIS-UTIB0000008-644413779605-MARCH FROM SHWETA",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 106
+  },
+  "L107": {
+   "date": "2026-03-19",
+   "particulars": "UPI-PURNA  GHOSH-PURNA.GHOSH@OKSBI-SBIN0012941-607867071986-MARCH THC",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 107
+  },
+  "L108": {
+   "date": "2026-03-23",
+   "particulars": "UPI-SOUROJIT GHOSH-SOUROJIT.GHOSH@OKHDFCBANK-HDFC0000545-120456133913-THC FEB 2026",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 108
+  },
+  "L109": {
+   "date": "2026-03-23",
+   "particulars": "UPI-SOUROJIT GHOSH-SOUROJIT.GHOSH@OKHDFCBANK-HDFC0000545-120456182182-THC  MARCH 2026",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 109
+  },
+  "L110": {
+   "date": "2026-04-12",
+   "particulars": "UPI-R P MATHAN-MATHANRAMAIAH-1@OKHDFCBANK-HDFC0009383-121507746732-UPI",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 110
+  },
+  "L111": {
+   "date": "2026-04-12",
+   "particulars": "UPI-PAVAN KUMAR SURYADEV-PAVANSDEVARA-GOOGLEMAIL.COM@OKAXIS-UTIB0000515-610288722188-UPI",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 111
+  },
+  "L112": {
+   "date": "2026-04-12",
+   "particulars": "UPI-SHWETA BALASUBRAMONI-SHWETA251181@OKAXIS-UTIB0000008-610209931337-UPI",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 112
+  },
+  "L113": {
+   "date": "2026-04-12",
+   "particulars": "UPI-PURNA  GHOSH-PURNA.GHOSH@OKSBI-SBIN0012941-610240591450-APRIL 2026 THC",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 113
+  },
+  "L114": {
+   "date": "2026-04-12",
+   "particulars": "UPI-ULYSSES DESIGN STUDI-IBRAHIM.ARCHITECTURE-1@OKICICI-ICIC0000202-646857041499-THC",
+   "credit": 3000,
+   "debit": 0,
+   "type": "dues",
+   "seq": 114
+  },
+  "L115": {
+   "date": "2026-04-12",
+   "particulars": "UPI-ACHUTHAN PRABHAVATHI-AR.AMULYA18-3@OKHDFCBANK-HDFC0007059-121508805408-UPI",
+   "credit": 3000,
+   "debit": 0,
+   "type": "dues",
+   "seq": 115
+  },
+  "L116": {
+   "date": "2026-04-12",
+   "particulars": "UPI-THE WICKER STORY-THEWICKERSTORY@OKHDFCBANK-HDFC0003974-121508641722-UPI",
+   "credit": 4500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 116
+  },
+  "L117": {
+   "date": "2026-04-12",
+   "particulars": "UPI-THE WICKER STORY-THEWICKERSTORY@OKHDFCBANK-HDFC0003974-121508654793-UPI",
+   "credit": 4500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 117
+  },
+  "L118": {
+   "date": "2026-04-12",
+   "particulars": "UPI-SESOLLA NEELESH KUMA-S.NEELESHKUMAR-1@OKAXIS-UTIB0000030-610236918959-UPI",
+   "credit": 6000,
+   "debit": 0,
+   "type": "dues",
+   "seq": 118
+  },
+  "L119": {
+   "date": "2026-04-12",
+   "particulars": "UPI-RAVINDRA PRABHAKAR A-RAVIANCHURI@OKHDFCBANK-HDFC0000696-121509482837-PALLAVI ANCHURI TH",
+   "credit": 6000,
+   "debit": 0,
+   "type": "dues",
+   "seq": 119
+  },
+  "L120": {
+   "date": "2026-04-14",
+   "particulars": "UPI-SHAMILA MEERAN-9676020871@PTYES-HDFC0000521-300762357637-SENT USING PAYTM U",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 120
+  },
+  "L121": {
+   "date": "2026-04-14",
+   "particulars": "UPI-PRASHANTHI NARAPASET-PRASHANTHI19@OKICICI-ICIC0000075-610449857928-THC MARCH APRIL",
+   "credit": 3000,
+   "debit": 0,
+   "type": "dues",
+   "seq": 121
+  },
+  "L122": {
+   "date": "2026-04-14",
+   "particulars": "UPI-FAISAL ASHRAF VOHRA-FAISAL.A.VOHRA-2@OKAXIS-UTIB0000425-647057639147-THC MONTHLY RETAIN",
+   "credit": 3000,
+   "debit": 0,
+   "type": "dues",
+   "seq": 122
+  },
+  "L123": {
+   "date": "2026-04-14",
+   "particulars": "UPI-RAVINDRA PRABHAKAR A-RAVIANCHURI@OKHDFCBANK-HDFC0000696-121580939674-RAVI ANCHURI THC J",
+   "credit": 6000,
+   "debit": 0,
+   "type": "dues",
+   "seq": 123
+  },
+  "L124": {
+   "date": "2026-04-14",
+   "particulars": "K L SRAVANTHI-169265209785",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 124
+  },
+  "L125": {
+   "date": "2026-05-12",
+   "particulars": "Amulya Gullapalli-123023639429",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 125
+  },
+  "L126": {
+   "date": "2026-05-12",
+   "particulars": "pavan suryadevara-613206701821",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 126
+  },
+  "L127": {
+   "date": "2026-05-12",
+   "particulars": "Purna Ghosh-613296451637",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 127
+  },
+  "L128": {
+   "date": "2026-05-12",
+   "particulars": "Shweta Balasubramoni-649894278316",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 128
+  },
+  "L129": {
+   "date": "2026-05-12",
+   "particulars": "Sourojit Ghosh-122992535364",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 129
+  },
+  "L130": {
+   "date": "2026-05-12",
+   "particulars": "RAJU A V K-697982483205",
+   "credit": 7500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 130
+  },
+  "L131": {
+   "date": "2026-05-14",
+   "particulars": "Prashanthi N-613472341174",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 131
+  },
+  "L132": {
+   "date": "2026-05-14",
+   "particulars": "K L SRAVANTHI-095318121745",
+   "credit": 1500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 132
+  },
+  "L133": {
+   "date": "2026-06-13",
+   "particulars": "Mathan Ramaiah-653088963921",
+   "credit": 6000,
+   "debit": 0,
+   "type": "dues",
+   "seq": 133
+  },
+  "L134": {
+   "date": "2026-08-15",
+   "particulars": "Shwetha-9798",
+   "credit": 3000,
+   "debit": 0,
+   "type": "dues",
+   "seq": 134
+  },
+  "L135": {
+   "date": "2026-08-15",
+   "particulars": "Geethu-3966",
+   "credit": 3000,
+   "debit": 0,
+   "type": "dues",
+   "seq": 135
+  },
+  "L136": {
+   "date": "2026-08-15",
+   "particulars": "Faisal-7033",
+   "credit": 4500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 136
+  },
+  "L137": {
+   "date": "2026-08-15",
+   "particulars": "Shamila -8845",
+   "credit": 4500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 137
+  },
+  "L138": {
+   "date": "2026-08-15",
+   "particulars": "Sravanthi-0718",
+   "credit": 3000,
+   "debit": 0,
+   "type": "dues",
+   "seq": 138
+  },
+  "L139": {
+   "date": "2026-08-16",
+   "particulars": "PurnaGhosh-3587",
+   "credit": 3000,
+   "debit": 0,
+   "type": "dues",
+   "seq": 139
+  },
+  "L140": {
+   "date": "2026-08-16",
+   "particulars": "Amulya Gullapalli-8332",
+   "credit": 3000,
+   "debit": 0,
+   "type": "dues",
+   "seq": 140
+  },
+  "L141": {
+   "date": "2026-08-16",
+   "particulars": "Sourojit Ghosh-5765",
+   "credit": 3000,
+   "debit": 0,
+   "type": "dues",
+   "seq": 141
+  },
+  "L142": {
+   "date": "2026-08-16",
+   "particulars": "Priyanka-1807",
+   "credit": 4500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 142
+  },
+  "L143": {
+   "date": "2026-08-16",
+   "particulars": "Anchuris-8722",
+   "credit": 9000,
+   "debit": 0,
+   "type": "dues",
+   "seq": 143
+  },
+  "L144": {
+   "date": "2026-08-16",
+   "particulars": "Prashanthi N-3372",
+   "credit": 3000,
+   "debit": 0,
+   "type": "dues",
+   "seq": 144
+  },
+  "L145": {
+   "date": "2026-08-16",
+   "particulars": "Geethu-2527",
+   "credit": 3000,
+   "debit": 0,
+   "type": "dues",
+   "seq": 145
+  },
+  "L146": {
+   "date": "2026-08-16",
+   "particulars": "Kasi -1691",
+   "credit": 4500,
+   "debit": 0,
+   "type": "dues",
+   "seq": 146
+  },
+  "L147": {
+   "date": "2026-08-16",
+   "particulars": "Srikanth-0670",
+   "credit": 6000,
+   "debit": 0,
+   "type": "dues",
+   "seq": 147
+  },
+  "L148": {
+   "date": "2026-08-16",
+   "particulars": "Pavan suryadevara-8887",
+   "credit": 6000,
+   "debit": 0,
+   "type": "dues",
+   "seq": 148
+  }
+ },
+ "contributions": {
+  "C01": {
+   "cause": "Academic fees for Annabathula Jayavardhini",
+   "name": "Kasi Raju",
+   "amount": 25000,
+   "date": "2025-12-15",
+   "details": "PhonePe transfer T2512151731472820296373",
+   "status": "paid",
+   "seq": 1
+  },
+  "C02": {
+   "cause": "Academic fees for Annabathula Jayavardhini",
+   "name": "Faisal Vohra",
+   "amount": 20000,
+   "date": null,
+   "details": "Paid",
+   "status": "paid",
+   "seq": 2
+  },
+  "C03": {
+   "cause": "Academic fees for Annabathula Jayavardhini",
+   "name": "Shweta Balasubramoni",
+   "amount": 10000,
+   "date": null,
+   "details": "Paid",
+   "status": "paid",
+   "seq": 3
+  },
+  "C04": {
+   "cause": "Academic fees for Annabathula Jayavardhini",
+   "name": "Amulya & Prashanti",
+   "amount": 10000,
+   "date": null,
+   "details": "Paid",
+   "status": "paid",
+   "seq": 4
+  },
+  "C05": {
+   "cause": "Academic fees for Annabathula Jayavardhini",
+   "name": "Meryl",
+   "amount": 5000,
+   "date": null,
+   "details": "Paid",
+   "status": "paid",
+   "seq": 5
+  },
+  "C06": {
+   "cause": "Academic fees for Annabathula Jayavardhini",
+   "name": "Sreyas Vidhu",
+   "amount": 5000,
+   "date": null,
+   "details": "Paid",
+   "status": "paid",
+   "seq": 6
+  },
+  "C07": {
+   "cause": "Academic fees for Annabathula Jayavardhini",
+   "name": "SMG",
+   "amount": 5000,
+   "date": null,
+   "details": "Paid",
+   "status": "paid",
+   "seq": 7
+  },
+  "C08": {
+   "cause": "Academic fees for Annabathula Jayavardhini",
+   "name": "Ibrahim Khan",
+   "amount": 5000,
+   "date": null,
+   "details": "",
+   "status": "pending",
+   "seq": 8
+  }
+ },
+ "settings": {
+  "general": {
+   "fee": 1500,
+   "startMonth": "2025-08",
+   "name": "The Hyderabad Cartel",
+   "short": "THC"
+  }
+ }
+}

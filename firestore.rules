@@ -1,0 +1,80 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{db}/documents {
+
+    // ---- helpers ----
+    function signedIn() { return request.auth != null; }
+    function email() { return request.auth.token.email.lower(); }
+    // Bootstrap admins: keep in sync with ADMIN_EMAILS in firebase-config.js. Others are added via the admins collection from the app.
+    function isAdmin() {
+      return signedIn() && (
+        email() in ['sreyas@fellowyellow.in', 'sreyas1234@gmail.com'] ||
+        exists(/databases/$(db)/documents/admins/$(email()))
+      );
+    }
+    function myMemberId() {
+      return get(/databases/$(db)/documents/users/$(request.auth.uid)).data.memberId;
+    }
+    // A member record is "mine" if it carries my email or uid, or my user doc points at it.
+    function ownsMember(id) {
+      let m = get(/databases/$(db)/documents/members/$(id)).data;
+      return signedIn() && (m.email == email() || m.uid == request.auth.uid || myMemberId() == id);
+    }
+    function onlyKeys(keys) { return request.resource.data.diff(resource.data).affectedKeys().hasOnly(keys); }
+
+    // ---- shared register ----
+    match /settings/{doc}      { allow read: if signedIn(); allow write: if isAdmin(); }
+    match /admins/{e}          { allow read: if signedIn(); allow write: if isAdmin(); }
+    match /contributions/{doc} { allow read: if signedIn(); allow write: if isAdmin(); }
+    match /notices/{doc}       { allow read: if signedIn(); allow write: if isAdmin(); }
+
+    match /members/{id} {
+      allow read: if signedIn();
+      allow create, delete: if isAdmin();
+      // Admin edits anything. A member may only touch their own `dues` map (self-recorded payment), nothing else.
+      allow update: if isAdmin() || (ownsMember(id) && onlyKeys(['dues']));
+    }
+
+    match /ledger/{id} {
+      allow read: if signedIn();
+      // Members can post a credit for themselves, always flagged unverified. Only admins edit/verify/delete.
+      allow create: if isAdmin() || (
+        signedIn() && request.resource.data.uid == request.auth.uid &&
+        request.resource.data.verified == false &&
+        request.resource.data.debit == 0 && request.resource.data.credit > 0 && request.resource.data.credit <= 50000 &&
+        ownsMember(request.resource.data.member)
+      );
+      allow update, delete: if isAdmin();
+    }
+
+    match /payments/{id} {
+      allow read: if isAdmin() || (signedIn() && resource.data.uid == request.auth.uid);
+      allow create: if signedIn() && request.resource.data.uid == request.auth.uid && request.resource.data.status == 'pending';
+      allow update, delete: if isAdmin();
+    }
+
+    match /events/{id} {
+      allow read: if signedIn();
+      allow write: if isAdmin();
+      match /rsvp/{memberId} {
+        allow read: if signedIn();
+        allow write: if isAdmin() || (ownsMember(memberId) && request.resource.data.uid == request.auth.uid);
+      }
+      match /attendance/{memberId} {
+        allow read: if signedIn();
+        allow delete: if isAdmin();
+        // Self check-in only with the event's code, and only for your own record.
+        allow create, update: if isAdmin() || (
+          ownsMember(memberId) && request.resource.data.uid == request.auth.uid &&
+          request.resource.data.by == 'self' &&
+          request.resource.data.code == get(/databases/$(db)/documents/events/$(id)).data.code
+        );
+      }
+    }
+
+    match /users/{uid} {
+      allow read: if isAdmin() || (signedIn() && request.auth.uid == uid);
+      allow write: if signedIn() && request.auth.uid == uid;
+    }
+  }
+}
