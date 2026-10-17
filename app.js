@@ -161,7 +161,9 @@ function renderPay(){
   if(!m){ $('#pay-sub').textContent='Link your member record first (tap your initials, top right).'; $('#pay-months').innerHTML=''; $('#pay-total').textContent='₹0'; return; }
   $('#pay-sub').textContent=`${INR(fee())} per month · ${esc(m.name)}`;
   const list=monthRange(months()[0], addMonths(curMonth,2)); const pend=pendingMonths(m);
-  $('#pay-months').innerHTML=list.filter(mo=>dueState(m,mo)!=='na').map(mo=>{ const st=dueState(m,mo); const has=st==='paid'; return `<label class="${has?'has':''}"><input type="checkbox" value="${mo}" ${has?'disabled':''} ${pend.includes(mo)&&mo<=curMonth?'checked':''}>${mLabel(mo)}${has?' ✓':''}</label>`; }).join('');
+  const paidUpto=[...list].reverse().find(mo=>dueState(m,mo)==='paid');
+  const show=list.filter(mo=>dueState(m,mo)!=='na' && (dueState(m,mo)!=='paid' || mo>curMonth));
+  $('#pay-months').innerHTML=(paidUpto?`<div class="small muted" style="grid-column:1/-1">Paid through ${mLabel(paidUpto)}</div>`:'')+show.map(mo=>{ const st=dueState(m,mo); const has=st==='paid'; return `<label class="${has?'has':''}"><input type="checkbox" value="${mo}" ${has?'disabled':''} ${pend.includes(mo)&&mo<=curMonth?'checked':''}>${mLabel(mo)}${has?' ✓':''}${mo>curMonth?' ·adv':''}</label>`; }).join('')||'<div class="small muted">Nothing due.</div>';
   payTotal();
 }
 const payTotal = () => { const n=$$('#pay-months input:checked').length; $('#pay-total').textContent=INR(n*fee()); };
