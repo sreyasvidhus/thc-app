@@ -13,8 +13,6 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/icon-192.png">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,500&display=swap">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -27,27 +25,25 @@
 </header>
 
 <main id="main">
-  <!-- SIGN IN / INTRO -->
+  <!-- SIGN IN -->
   <section class="page on intro" id="p-signin">
-    <div class="noir">
-      <div class="noir-grain"></div>
-      <div class="noir-in">
-        <div class="noir-eyebrow">Est. Hyderabad · 2025</div>
-        <div class="noir-seal"><span>THC</span></div>
-        <h1 class="noir-title">The Hyderabad<br>Cartel</h1>
-        <p class="noir-tag">Twenty-two studios. One table. Every month.</p>
-        <ul class="noir-rules">
-          <li><b>I.</b> You pay your respects on the first of the month. Fifteen hundred. No excuses, no IOUs.</li>
-          <li><b>II.</b> You show up when the Family meets. The book remembers who sat at the table.</li>
-          <li><b>III.</b> The ledger is sacred. Only the Treasurer's word can change it.</li>
-        </ul>
-        <form class="noir-form" id="signin-form" autocomplete="on">
-          <input id="si-user" name="username" autocomplete="username" autocapitalize="none" spellcheck="false" placeholder="username (e.g. faisal.vohra)" required>
-          <input id="si-pass" name="password" type="password" autocomplete="current-password" placeholder="password" required>
-          <button class="btn noir-btn" id="signin-btn" type="submit">Take the oath · Sign in</button>
+    <div class="signin">
+      <div class="signin-card">
+        <div class="mark big">THC</div>
+        <h1>The Hyderabad Cartel</h1>
+        <p class="muted">Dues, events and the ledger for the collective.</p>
+        <form id="signin-form" autocomplete="on">
+          <div class="field"><label for="si-user">Username</label><input id="si-user" name="username" autocomplete="username" autocapitalize="none" spellcheck="false" placeholder="first.last" required></div>
+          <div class="field"><label for="si-pass">Password</label><input id="si-pass" name="password" type="password" autocomplete="current-password" required></div>
+          <button class="btn" id="signin-btn" type="submit">Sign in</button>
         </form>
-        <p class="noir-fine" id="signin-msg">Members only. Forgot your password? Ask the Treasurer to reset it.</p>
+        <p class="small muted" id="signin-msg">Members only. Forgot your password? Ask the treasurer to reset it.</p>
       </div>
+      <ul class="signin-rules">
+        <li><b>Dues</b> ₹1,500 on the first of every month. Pay from here via UPI.</li>
+        <li><b>Meets</b> RSVP and check in; the register remembers who came.</li>
+        <li><b>Ledger</b> Every rupee in and out, verified by the treasurer.</li>
+      </ul>
     </div>
   </section>
 
@@ -148,8 +144,15 @@
 
   <!-- EVENTS -->
   <section class="page" id="p-events">
-    <div class="sec-h"><h1>Events</h1><button class="btn sm admin" id="event-add">+ New</button></div>
+    <div class="sec-h"><h1>Events</h1><div class="row-btns"><button class="chip" id="ev-archive">Past events</button><button class="btn sm admin" id="event-add">+ New</button></div></div>
     <div id="event-list" class="stack"></div>
+  </section>
+
+  <!-- PAST EVENTS -->
+  <section class="page" id="p-archive">
+    <div class="sec-h"><div><h1>Past events</h1><p class="muted" id="ar-sub" style="margin:4px 0 0"></p></div><button class="chip" data-go="events">‹ Upcoming</button></div>
+    <div class="toolbar"><input class="search" id="ar-q" type="search" placeholder="Search title, venue or notes"><select class="search" id="ar-year" style="width:auto"></select></div>
+    <div class="card tight"><div class="tbl-wrap"><table id="ar-table"></table></div></div>
   </section>
 
   <!-- MEMBERS -->
