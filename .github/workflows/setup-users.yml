@@ -1,6 +1,8 @@
 name: Set up member accounts
 on:
   workflow_dispatch:
+  push:
+    paths: ['seed.json', 'scripts/setup-users.mjs', '.github/workflows/setup-users.yml']
 jobs:
   setup:
     runs-on: ubuntu-latest

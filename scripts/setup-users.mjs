@@ -6,6 +6,7 @@ const sa = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT || '{}'); if (!sa.pro
 admin.initializeApp({ credential: admin.credential.cert(sa) });
 const auth = admin.auth(), db = admin.firestore();
 const rows = JSON.parse(Buffer.from(process.env.THC_ACCOUNTS || '', 'base64').toString('utf8') || '[]');
+console.log(rows.length ? rows.length + ' accounts in THC_ACCOUNTS' : 'THC_ACCOUNTS not set: seeding register only, no accounts created');
 const seed = JSON.parse(fs.readFileSync('seed.json', 'utf8'));
 const s = await db.doc('settings/general').get();
 if (!s.exists) {
