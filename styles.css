@@ -171,3 +171,9 @@ a.pill{text-decoration:none}
 
 .tabs button.admin{display:none}body.is-admin .tabs button.admin{display:flex}
 @media (min-width:600px){.tiles2.four{grid-template-columns:repeat(4,1fr)}}
+
+.noir-form{display:flex;flex-direction:column;gap:10px;width:min(360px,100%);margin-top:6px;opacity:0;animation:rise .9s 2.1s ease forwards}
+.noir-form input{background:rgba(255,255,255,.06);border:1px solid rgba(201,162,77,.35);color:#f1e7d0;border-radius:12px;padding:13px 14px;font:16px var(--font);width:100%}
+.noir-form input::placeholder{color:#8a7f69}
+.noir-form input:focus{outline:2px solid #c9a24d;outline-offset:-1px}
+.noir-form .noir-btn{animation:none;opacity:1;margin-top:4px}

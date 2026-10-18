@@ -42,18 +42,21 @@ document.addEventListener('click', e => { const a=e.target.closest('[data-go]');
 const armConfirm = (btn, fn) => { if(btn.dataset.arm){ fn(); } else { btn.dataset.arm='1'; const t=btn.textContent; btn.textContent='Tap again to confirm'; setTimeout(()=>{ delete btn.dataset.arm; btn.textContent=t; },3000); } };
 
 // ---------- firebase ----------
-if(!C.firebase || C.firebase.apiKey==='PASTE_API_KEY'){ $('#signin-msg').innerHTML='<span class="banner">firebase-config.js has not been filled in yet. See SETUP.md.</span>'; $('#signin-google').disabled=true; return; }
+if(!C.firebase || C.firebase.apiKey==='PASTE_API_KEY'){ $('#signin-msg').innerHTML='<span class="banner">firebase-config.js has not been filled in yet. See SETUP.md.</span>'; $('#signin-btn').disabled=true; return; }
 firebase.initializeApp(C.firebase);
 const auth = firebase.auth(); const db = firebase.firestore();
 db.enablePersistence({synchronizeTabs:true}).catch(()=>{});
 const FV = firebase.firestore.FieldValue;
 let messaging=null; try{ if(firebase.messaging.isSupported()) messaging=firebase.messaging(); }catch{}
 
-$('#signin-google').addEventListener('click', async () => {
-  const p=new firebase.auth.GoogleAuthProvider(); p.setCustomParameters({prompt:'select_account'});
-  try{ await auth.signInWithPopup(p); }catch(e){ if(e.code==='auth/popup-blocked'||e.code==='auth/operation-not-supported-in-this-environment'||e.code==='auth/cancelled-popup-request') auth.signInWithRedirect(p); else if(e.code!=='auth/popup-closed-by-user') fail(e); }
+const LOGIN_DOMAIN='thehyderabadcartel.com';
+const toLoginEmail = u => { u=u.trim().toLowerCase(); return u.includes('@') ? u : u.replace(/\s+/g,'.')+'@'+LOGIN_DOMAIN; };
+$('#signin-form').addEventListener('submit', async e => {
+  e.preventDefault(); const btn=$('#signin-btn'); btn.disabled=true; const u=$('#si-user').value, p=$('#si-pass').value;
+  try{ await auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL); await auth.signInWithEmailAndPassword(toLoginEmail(u), p); }
+  catch(x){ const m = {'auth/invalid-credential':'Wrong username or password','auth/wrong-password':'Wrong password','auth/user-not-found':'No member with that username','auth/too-many-requests':'Too many attempts. Wait a few minutes.','auth/network-request-failed':'No internet connection'}[x.code]||x.message; toast(m); }
+  btn.disabled=false;
 });
-
 auth.onAuthStateChanged(async user => {
   S.unsub.forEach(u=>u()); S.unsub=[];
   S.user=user; S.udoc=null; S.member=null; S.memberId=null; S.isAdmin=false;
@@ -67,7 +70,7 @@ auth.onAuthStateChanged(async user => {
   // user doc
   const uref=db.doc('users/'+user.uid);
   try{ await uref.set({email, name:user.displayName||'', photo:user.photoURL||'', lastSeen:FV.serverTimestamp()}, {merge:true}); }catch(e){ fail(e); }
-  S.unsub.push(uref.onSnapshot(s=>{ S.udoc=s.data()||{}; resolveMember(); }));
+  S.unsub.push(uref.onSnapshot(s=>{ S.udoc=s.data()||{}; resolveMember(); if(S.udoc.mustChangePassword && !$('#scrim').classList.contains('on')) passwordSheet(true); }));
   // shared data
   S.unsub.push(db.doc('settings/general').onSnapshot(s=>{ if(s.exists) S.settings={...S.settings,...s.data()}; renderAll(); }));
   S.unsub.push(db.collection('members').onSnapshot(s=>{ const o={}; s.forEach(d=>o[d.id]=d.data()); S.members=o; resolveMember(); renderAll(); }, fail));
@@ -351,7 +354,7 @@ function memberForm(id){ const m=id?S.members[id]:{name:'',studio:'',position:'M
   openSheet(`<div class="sheet-h"><h2>${id?'Edit member':'Register a member'}</h2><button class="icon-btn" data-x>✕</button></div>
   <div class="frow">${f('name','Full name')}${f('studio','Studio')}</div><div class="frow"><div class="field"><label>Position</label><select id="f-position">${['Member','Chair','Media & PR','Research','Treasurer','Secretary'].map(p=>`<option ${m.position===p?'selected':''}>${p}</option>`).join('')}</select></div><div class="field"><label>Status</label><select id="f-status"><option value="active" ${m.status!=='left'?'selected':''}>Active</option><option value="left" ${m.status==='left'?'selected':''}>Left</option></select></div></div>
   <div class="frow"><div class="field"><label>Member since</label><input id="f-joined" type="month" value="${esc(m.joined||curMonth)}"></div><div class="field"><label>Last month (if left)</label><input id="f-left" type="month" value="${esc(m.left||'')}"></div></div>
-  <div class="frow">${f('phone','Phone','tel')}${f('email','Google email (for sign-in)','email')}</div>${f('website','Website')}<div class="frow">${f('birthday','Birthday','date')}${f('anniversary','Anniversary','date')}</div><div class="field"><label>Address</label><textarea id="f-address" rows="2">${esc(m.address||'')}</textarea></div>
+  <div class="frow">${f('phone','Phone','tel')}${f('email','Email','email')}</div>${f('website','Website')}<div class="frow">${f('birthday','Birthday','date')}${f('anniversary','Anniversary','date')}</div><div class="field"><label>Address</label><textarea id="f-address" rows="2">${esc(m.address||'')}</textarea></div>
   <div class="sheet-f">${id?'<button class="btn danger" id="f-del" style="margin-right:auto">Remove</button>':''}<button class="btn ghost" data-x>Cancel</button><button class="btn" id="f-save">Save</button></div>`);
   $('#f-save').onclick=async()=>{ const g=k=>$('#f-'+k).value.trim(); if(!g('name')) return toast('Name required');
     const doc={...m, name:g('name'), studio:g('studio'), position:g('position'), status:g('status'), joined:g('joined')||curMonth, left:g('left')||null, phone:g('phone')||null, email:g('email').toLowerCase()||null, website:g('website')||null, birthday:g('birthday')||null, anniversary:g('anniversary')||null, address:g('address')||null, dues:m.dues||{}, order:m.order??(Math.max(0,...Object.values(S.members).map(x=>x.order||0))+1)};
@@ -443,11 +446,19 @@ $('#p-admin').addEventListener('click', e=>{ const b=e.target.closest('[data-dl]
 });
 
 // ---------- account / admin sheets ----------
+function passwordSheet(forced){
+  openSheet(`<div class="sheet-h"><h2>${forced?'Set your own password':'Change password'}</h2>${forced?'':'<button class="icon-btn" data-x>✕</button>'}</div>${forced?'<p class="small muted">You signed in with the password the Treasurer gave you. Pick your own before continuing.</p>':''}
+  <div class="field"><label>New password (8+ characters)</label><input id="pw1" type="password" autocomplete="new-password"></div><div class="field"><label>Repeat it</label><input id="pw2" type="password" autocomplete="new-password"></div>
+  <div class="sheet-f"><button class="btn" id="pw-save">Save password</button></div>`);
+  $('#pw-save').onclick=async()=>{ const a1=$('#pw1').value, a2=$('#pw2').value; if(a1.length<8) return toast('Use at least 8 characters'); if(a1!==a2) return toast('Passwords do not match');
+    try{ await S.user.updatePassword(a1); await db.doc('users/'+S.user.uid).set({mustChangePassword:false},{merge:true}); closeSheet(); toast('Password updated'); }
+    catch(x){ if(x.code==='auth/requires-recent-login'){ toast('Please sign out and sign in again, then change the password'); } else fail(x); } };
+}
 function accountSheet(){ const u=S.user; const push=Notification?.permission;
-  openSheet(`<div class="sheet-h"><h2>Account</h2><button class="icon-btn" data-x>✕</button></div><div class="kv"><div>Signed in</div><div>${esc(u.displayName||'')}<br><span class="muted">${esc(u.email)}</span></div><div>Member record</div><div>${S.member?esc(S.member.name)+(S.member.email?.toLowerCase()===u.email.toLowerCase()||S.member.uid===u.uid?' <span class="pill paid">confirmed</span>':' <span class="pill pending">awaiting confirmation</span>'):'<button class="chip" id="ac-link">Link my record</button>'}</div><div>Role</div><div>${S.isAdmin?'Treasurer / admin':'Member'}</div>${S.memberId?`<div>Food &amp; drink</div><div><button class="chip" id="ac-prefs">${S.member?.profile?.prefs?.diet?'Edit preferences':'Fill in preferences'}</button></div><div>Profile</div><div><button class="chip" id="ac-prof">${S.member?.profile?.bio?'Edit my profile':'Fill in my profile'}</button></div>`:''}<div>Notifications</div><div>${push==='granted'?'<span class="pill paid">On</span>':`<button class="chip" id="ac-push">Turn on</button>`}</div></div>
+  openSheet(`<div class="sheet-h"><h2>Account</h2><button class="icon-btn" data-x>✕</button></div><div class="kv"><div>Signed in</div><div>${esc(u.displayName||'')}<br><span class="muted">${esc((u.email||'').replace('@'+LOGIN_DOMAIN,''))}</span></div><div>Password</div><div><button class="chip" id="ac-pw">Change password</button></div><div>Member record</div><div>${S.member?esc(S.member.name)+(S.member.email?.toLowerCase()===u.email.toLowerCase()||S.member.uid===u.uid?' <span class="pill paid">confirmed</span>':' <span class="pill pending">awaiting confirmation</span>'):'<button class="chip" id="ac-link">Link my record</button>'}</div><div>Role</div><div>${S.isAdmin?'Treasurer / admin':'Member'}</div>${S.memberId?`<div>Food &amp; drink</div><div><button class="chip" id="ac-prefs">${S.member?.profile?.prefs?.diet?'Edit preferences':'Fill in preferences'}</button></div><div>Profile</div><div><button class="chip" id="ac-prof">${S.member?.profile?.bio?'Edit my profile':'Fill in my profile'}</button></div>`:''}<div>Notifications</div><div>${push==='granted'?'<span class="pill paid">On</span>':`<button class="chip" id="ac-push">Turn on</button>`}</div></div>
   ${!window.matchMedia('(display-mode: standalone)').matches?`<div class="banner" style="background:var(--fill);color:var(--fg)"><b>Install the app:</b> ${isIOS?'Safari → Share → Add to Home Screen.':'Chrome menu (⋮) → Add to Home screen / Install app.'}</div>`:''}
   <div class="sheet-f"><button class="btn ghost" id="ac-out">Sign out</button></div>`);
-  $('#ac-link')?.addEventListener('click',()=>{ closeSheet(); renderLink(); go('link'); }); $('#ac-prof')?.addEventListener('click',()=>profileForm(S.memberId)); $('#ac-prefs')?.addEventListener('click',()=>{ closeSheet(); renderPrefs(); go('prefs'); }); $('#ac-push')?.addEventListener('click',async()=>{ await enablePush(); accountSheet(); }); $('#ac-out').onclick=()=>auth.signOut().then(closeSheet);
+  $('#ac-link')?.addEventListener('click',()=>{ closeSheet(); renderLink(); go('link'); }); $('#ac-prof')?.addEventListener('click',()=>profileForm(S.memberId)); $('#ac-prefs')?.addEventListener('click',()=>{ closeSheet(); renderPrefs(); go('prefs'); }); $('#ac-push')?.addEventListener('click',async()=>{ await enablePush(); accountSheet(); }); $('#ac-out').onclick=()=>auth.signOut().then(closeSheet); $('#ac-pw')?.addEventListener('click',()=>passwordSheet(false));
 }
 function settingsSheet(){
   openSheet(`<div class="sheet-h"><h2>Register settings</h2><button class="icon-btn" data-x>✕</button></div><div class="frow"><div class="field"><label>Monthly fee (₹)</label><input id="s-fee" type="number" value="${fee()}"></div><div class="field"><label>First month</label><input id="s-start" type="month" value="${esc(S.settings.startMonth||'2025-08')}"></div></div><div class="frow"><div class="field"><label>THC UPI ID (members pay here)</label><input id="s-upi" value="${esc(S.settings.upiId||(C.UPI_ID&&!C.UPI_ID.startsWith('PASTE')?C.UPI_ID:''))}" placeholder="thc@okaxis"></div><div class="field"><label>Payee name</label><input id="s-upn" value="${esc(S.settings.upiName||C.UPI_NAME||'The Hyderabad Cartel')}"></div></div>

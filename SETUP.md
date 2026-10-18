@@ -50,3 +50,9 @@ On the Pay screen tick more than one member (e.g. Ravi ticks Pallavi too). One U
 
 ## Food & drink
 Account → Food & drink. Diet, drinks, allergies and a usual order. On any event the host/admin taps **Catering** for a headcount by diet and drink among those who RSVP'd.
+
+## Member accounts (username + password)
+Sign-in is by username (first.last, e.g. `faisal.vohra`) and a password. Accounts are created by the **Set up member accounts** workflow (Actions tab) from the `THC_ACCOUNTS` secret; each member is forced to set their own password at first sign-in. Treasurer resets a password from Firebase console → Authentication → Users → ⋮ → Reset password (or re-run the workflow with a new secret). Admin usernames: `sreyas.vidhu` (add more in the `admins` collection as `<username>@thehyderabadcartel.com`).
+
+## Google Sheet mirror
+Create a Google Sheet, share it (Editor) with `firebase-adminsdk-fbsvc@thc-app-358f1.iam.gserviceaccount.com`, enable the Google Sheets API for project thc-app-358f1 in Google Cloud, and set the repo variable `SHEET_ID` (Settings → Secrets and variables → Actions → Variables) to the sheet's ID. Every 10 minutes the sheet is rewritten with Summary, Member status, Dues matrix, Ledger, App payments and Contributions. The app stays the source of truth; edits in the sheet are overwritten.

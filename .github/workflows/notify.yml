@@ -1,4 +1,4 @@
-name: Send THC notifications
+name: THC notifications and sheet sync
 on:
   schedule:
     - cron: '*/10 * * * *'
@@ -14,3 +14,7 @@ jobs:
       - run: node scripts/send-notices.mjs
         env:
           FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+      - run: node scripts/sync-sheet.mjs
+        env:
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          SHEET_ID: ${{ vars.SHEET_ID }}

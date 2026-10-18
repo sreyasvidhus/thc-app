@@ -41,8 +41,12 @@
           <li><b>II.</b> You show up when the Family meets. The book remembers who sat at the table.</li>
           <li><b>III.</b> The ledger is sacred. Only the Treasurer's word can change it.</li>
         </ul>
-        <button class="btn noir-btn" id="signin-google">Take the oath · Sign in with Google</button>
-        <p class="noir-fine" id="signin-msg">Members only. Use the Google account the Family has on record.</p>
+        <form class="noir-form" id="signin-form" autocomplete="on">
+          <input id="si-user" name="username" autocomplete="username" autocapitalize="none" spellcheck="false" placeholder="username (e.g. faisal.vohra)" required>
+          <input id="si-pass" name="password" type="password" autocomplete="current-password" placeholder="password" required>
+          <button class="btn noir-btn" id="signin-btn" type="submit">Take the oath · Sign in</button>
+        </form>
+        <p class="noir-fine" id="signin-msg">Members only. Forgot your password? Ask the Treasurer to reset it.</p>
       </div>
     </div>
   </section>
@@ -50,7 +54,7 @@
   <!-- LINK ACCOUNT -->
   <section class="page" id="p-link">
     <h1>Who are you?</h1>
-    <p class="muted">We couldn't match <b id="link-email"></b> to a member. Pick your name once; an admin will confirm it.</p>
+    <p class="muted">We couldn't match <b id="link-email"></b> to a member. Pick your name once; the Treasurer will confirm it.</p>
     <input class="search" id="link-q" placeholder="Search your name">
     <div class="list card" id="link-list"></div>
   </section>
