@@ -1,4 +1,4 @@
-// One-time: seeds the register (if empty) and creates/updates username+password accounts.
+// One-time (re-run on push): seeds the register (if empty) and creates/updates username+password accounts.
 // Env: FIREBASE_SERVICE_ACCOUNT (json), THC_ACCOUNTS (base64 JSON array of {memberId,name,username,email,password}).
 import admin from 'firebase-admin';
 import fs from 'fs';
